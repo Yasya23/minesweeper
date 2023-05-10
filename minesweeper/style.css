@@ -23,6 +23,16 @@
   background-color: beige;
 }
 
+.medium {
+  width: 35px;
+  height: 35px;
+}
+
+.hard {
+  width: 19px;
+  height: 19px;
+}
+
 .bomb {
   background-color: blue;
 }
