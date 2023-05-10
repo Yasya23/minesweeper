@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 620px;
+  height: 700px;
+  padding: 10px;
+  background-color: #d9d9ff;
+}
+
+.filled {
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.cell {
+  width: 55px;
+  height: 55px;
+  background-color: beige;
+}
+
+.bomb {
+  background-color: blue;
+}
