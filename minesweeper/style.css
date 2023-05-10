@@ -23,6 +23,22 @@
   background-color: beige;
 }
 
+.number1 {
+  background-color: rgb(104, 192, 255);
+}
+
+.number2 {
+  background-color: rgb(255, 255, 50);
+}
+
+.number3 {
+  background-color: rgb(234, 50, 255);
+}
+
+.bomb {
+  background-color: red;
+}
+
 .medium {
   width: 35px;
   height: 35px;
@@ -31,8 +47,4 @@
 .hard {
   width: 19px;
   height: 19px;
-}
-
-.bomb {
-  background-color: blue;
 }

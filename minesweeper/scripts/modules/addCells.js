@@ -22,14 +22,10 @@ function createCells() {
     let count = 0;
     let neighbors = getNeighbors(index);
     neighbors.forEach((neighbor) => {
-      if (finishArray[neighbor] === 'bomb') {
-        count++;
-      }
+      if (finishArray[neighbor] === 'bomb') count++;
     });
 
-    if (count > 0) {
-      finishArray[index] = `number${count}`;
-    }
+    if (count > 0) finishArray[index] = `number${count}`;
   });
 
   addCellsToHtml(finishArray);
