@@ -13,7 +13,7 @@ function actionsWithCells(id) {
 }
 
 document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('example-class')) actionsWithCells(e.target.id);
+  if (e.target.classList.contains('cell')) actionsWithCells(e.target.id);
 });
 
 function init() {

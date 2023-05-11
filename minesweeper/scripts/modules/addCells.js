@@ -57,14 +57,15 @@ function createCells() {
       ...new Array(bombQuantity).fill('bomb'),
       ...new Array(cellQuantity).fill('simple'),
     ].sort(() => Math.random() - 0.5);
-
-    const clickedCellIndex = finishArray.indexOf(String(clickedCell));
-    const nonBombIndex = finishArray.findIndex((element) => element !== 'bomb');
-    [finishArray[clickedCellIndex], finishArray[nonBombIndex]] = [
-      finishArray[nonBombIndex],
-      finishArray[clickedCellIndex],
-    ];
-
+    console.log(finishArray[clickedCell]);
+    if (finishArray[clickedCell] === 'bomb') {
+      const nonBombIndex = finishArray.findIndex((element) => element !== 'bomb');
+      console.log(nonBombIndex);
+      [finishArray[clickedCell], finishArray[nonBombIndex]] = [
+        finishArray[nonBombIndex],
+        finishArray[clickedCell],
+      ];
+    }
     finishArray.forEach((element, index) => {
       if (element === 'bomb') return;
 
