@@ -86,4 +86,4 @@ function returnFinishArray() {
   return finishArray;
 }
 
-export { createCells, returnFinishArray };
+export { createCells, returnFinishArray, getNeighbors };
