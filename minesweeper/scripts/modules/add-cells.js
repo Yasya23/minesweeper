@@ -1,7 +1,4 @@
-import {
-  returnIsFirstClick,
-  returnElementId,
-} from './first-click.js';
+import { returnIsFirstClick, returnElementId } from './first-click.js';
 
 const levels = {
   easy: 10,
@@ -11,7 +8,7 @@ const levels = {
 
 let finishArray = [];
 
-const level = levels.easy;
+const level = 10;
 
 const bombQuantity = 10;
 
@@ -42,10 +39,20 @@ function getNeighbors(index) {
 
 function addCellsToHtml(array) {
   const filled = document.querySelector('.filled');
-  const cells = array
-    .map((_, index) => `<div class="cell" id=${index}></div>`)
-    .join('');
-  filled.innerHTML = cells;
+  let cellsHtml = '';
+  array.forEach((_, index) => {
+    const cellHtml = `<div class="cell" id=${index}></div>`;
+    const isFirstCellInRow = index % level === 0;
+    const isLastCellInRow = (index + 1) % level === 0;
+    if (isFirstCellInRow) {
+      cellsHtml += '<div class="row">';
+    }
+    cellsHtml += cellHtml;
+    if (isLastCellInRow) {
+      cellsHtml += '</div>';
+    }
+  });
+  filled.innerHTML = cellsHtml;
 }
 
 function createCells() {

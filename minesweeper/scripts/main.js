@@ -14,13 +14,14 @@ function actionsWithCells(id) {
   handleCellAction(id);
 }
 
-document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('cell')) actionsWithCells(e.target.id);
-});
-
 function init() {
   createPageStructure();
   createCells();
 }
+
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('cell')) actionsWithCells(e.target.id);
+  if (e.target.id === 'new-game') createCells();
+});
 
 init();

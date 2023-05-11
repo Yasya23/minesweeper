@@ -1,70 +1,109 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 100vh;
+  align-items: center;
+}
+
 .wrapper {
-  width: 620px;
-  height: 700px;
-  padding: 10px;
-  background-color: #d9d9ff;
+  margin: 0 auto;
+  max-width: 620px;
+  height: auto;
+}
+
+.menu {
+  margin-bottom: 20px;
 }
 
 .filled {
-  width: 600px;
-  height: 600px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
+  max-width: 620px;
+  max-height: auto;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(10px, 55px));
+  grid-gap: 2px;
+  padding: 5px;
+  background-color: #b9d8ff;
+  border-radius: 0px;
 }
 
 .cell {
-  width: 55px;
-  height: 55px;
-  background-color: beige;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #ecf4ff;
+  border-radius: 10%;
 }
 
-.number1 {
-  background-color: rgb(104, 192, 255);
-}
-
-.number2 {
-  background-color: rgb(255, 255, 50);
-}
-
-.number3 {
-  background-color: rgb(234, 50, 255);
-}
-
-.number4 {
-  background-color: rgb(142, 255, 50);
-}
-
-.number5 {
-  background-color: rgb(74, 50, 255);
-}
-
-.number6 {
-  background-color: rgb(255, 50, 231);
-}
-
-.number7 {
-  background-color: rgb(123, 0, 108);
-}
-
-.number8 {
-  background-color: rgb(0, 90, 123);
+.simple-white {
+  background-color: white;
 }
 
 .bomb {
-  background-color: red;
+  background-color: rgb(255, 255, 255);
 }
 
-.medium {
-  width: 35px;
-  height: 35px;
+@media (min-width:500px) {
+
+  .filled {
+    grid-gap: 5px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .simple-white {
+    -webkit-box-shadow: inset 0px -0.2em 0px 0px #dbeafe;
+    -moz-box-shadow: inset 0px -0.2em 0px 0px #dbeafe;
+    box-shadow: inset 0px -0.2em 0px 0px #dbeafe;
+  }
+  
+  .bomb {
+    background-color: rgb(255, 255, 255);
+    -webkit-box-shadow: inset 0px -0.2em 0px 0px #dbeafe;
+    -moz-box-shadow: inset 0px -0.2em 0px 0px #dbeafe;
+    box-shadow: inset 0px -0.2em 0px 0px #dbeafe;
+  }
+  
 }
 
-.hard {
-  width: 19px;
-  height: 19px;
+.row {
+  display: contents; 
 }
+
+.number1 {
+  background-color: #fe68c2;
+}
+
+.number2 {
+  background-color: #c2fe68;
+}
+
+.number3 {
+  background-color: #68c2fe;
+}
+
+.number4 {
+  background-color: #fdf96c;
+}
+
+.number5 {
+  background-color: #6cfdf9;
+}
+
+.number6 {
+  background-color: #f96cfd;
+}
+
+.number7 {
+  background-color: #feba48;
+}
+
+.number8 {
+  background-color: #ba48fe;
+}
+

@@ -29,7 +29,7 @@ function isSimpleCellClicked(array, id) {
       return;
     }
     if (!document.getElementById(neighbor).classList.contains('clicked')) {
-      document.getElementById(neighbor).classList.add('clicked');
+      document.getElementById(neighbor).classList.add('clicked', 'simple-white');
       isSimpleCellClicked(array, neighbor);
     }
   });
