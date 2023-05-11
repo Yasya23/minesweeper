@@ -1,3 +1,8 @@
+import {
+  returnIsFirstClick,
+  returnElementId,
+} from './isFirstClick.js';
+
 const levels = {
   easy: 10,
   medium: 15,
@@ -19,7 +24,8 @@ function getNeighbors(index) {
       const newRow = row + i;
       const newColumn = column + j;
       if (
-        newRow >= 0 && newRow < level
+        newRow >= 0
+        && newRow < level
         && newColumn >= 0
         && newColumn < level
         && !(i === 0 && j === 0)
@@ -36,7 +42,7 @@ function addCellsToHtml(array) {
   console.log(array);
   const filled = document.querySelector('.filled');
   const cells = array
-    .map((element) => `<div class="cell ${element}"></div>`)
+    .map((element, index) => `<div class="cell ${element}" id=${index}></div>`)
     .join('');
   filled.innerHTML = cells;
 }
@@ -44,23 +50,35 @@ function addCellsToHtml(array) {
 function createCells() {
   const quantity = level ** 2;
   const cellQuantity = quantity - bombQuantity;
-  const finishArray = [
-    ...new Array(bombQuantity).fill('bomb'),
-    ...new Array(cellQuantity).fill('simple'),
-  ].sort(() => Math.random() - 0.5);
+  let finishArray = [];
+  if (returnIsFirstClick()) {
+    const clickedCell = returnElementId();
+    finishArray = [
+      ...new Array(bombQuantity).fill('bomb'),
+      ...new Array(cellQuantity).fill('simple'),
+    ].sort(() => Math.random() - 0.5);
 
-  finishArray.forEach((element, index) => {
-    if (element === 'bomb') return;
+    const clickedCellIndex = finishArray.indexOf(String(clickedCell));
+    const nonBombIndex = finishArray.findIndex((element) => element !== 'bomb');
+    [finishArray[clickedCellIndex], finishArray[nonBombIndex]] = [
+      finishArray[nonBombIndex],
+      finishArray[clickedCellIndex],
+    ];
 
-    let count = 0;
+    finishArray.forEach((element, index) => {
+      if (element === 'bomb') return;
 
-    const neighbors = getNeighbors(index);
-    neighbors.forEach((neighbor) => {
-      if (finishArray[neighbor] === 'bomb') count += 1;
+      let count = 0;
+
+      const neighbors = getNeighbors(index);
+      neighbors.forEach((neighbor) => {
+        if (finishArray[neighbor] === 'bomb') count += 1;
+      });
+      if (count > 0) finishArray[index] = `number${count}`;
     });
-
-    if (count > 0) finishArray[index] = `number${count}`;
-  });
+  } else {
+    finishArray = new Array(level * level).fill('');
+  }
 
   addCellsToHtml(finishArray);
 }
