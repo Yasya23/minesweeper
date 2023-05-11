@@ -1,13 +1,15 @@
 import {
   returnIsFirstClick,
   returnElementId,
-} from './isFirstClick.js';
+} from './first-click.js';
 
 const levels = {
   easy: 10,
   medium: 15,
   hard: 25,
 };
+
+let finishArray = [];
 
 const level = levels.easy;
 
@@ -39,10 +41,9 @@ function getNeighbors(index) {
 }
 
 function addCellsToHtml(array) {
-  console.log(array);
   const filled = document.querySelector('.filled');
   const cells = array
-    .map((element, index) => `<div class="cell ${element}" id=${index}></div>`)
+    .map((_, index) => `<div class="cell" id=${index}></div>`)
     .join('');
   filled.innerHTML = cells;
 }
@@ -50,17 +51,14 @@ function addCellsToHtml(array) {
 function createCells() {
   const quantity = level ** 2;
   const cellQuantity = quantity - bombQuantity;
-  let finishArray = [];
   if (returnIsFirstClick()) {
     const clickedCell = returnElementId();
     finishArray = [
       ...new Array(bombQuantity).fill('bomb'),
       ...new Array(cellQuantity).fill('simple'),
     ].sort(() => Math.random() - 0.5);
-    console.log(finishArray[clickedCell]);
     if (finishArray[clickedCell] === 'bomb') {
       const nonBombIndex = finishArray.findIndex((element) => element !== 'bomb');
-      console.log(nonBombIndex);
       [finishArray[clickedCell], finishArray[nonBombIndex]] = [
         finishArray[nonBombIndex],
         finishArray[clickedCell],
@@ -84,4 +82,8 @@ function createCells() {
   addCellsToHtml(finishArray);
 }
 
-export default createCells;
+function returnFinishArray() {
+  return finishArray;
+}
+
+export { createCells, returnFinishArray };
