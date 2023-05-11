@@ -1,15 +1,17 @@
-import createCells from './modules/addCells.js';
-import createPageStructure from './modules/pageStructure.js';
+import { createCells } from './modules/add-cells.js';
+import createPageStructure from './modules/page-structure.js';
 import {
   updateIsFirstClick,
   returnIsFirstClick,
-} from './modules/isFirstClick.js';
+} from './modules/first-click.js';
+import handleCellAction from './modules/handle-cell-actions.js';
 
 function actionsWithCells(id) {
   if (!returnIsFirstClick()) {
     updateIsFirstClick(id);
     createCells();
   }
+  handleCellAction(id);
 }
 
 document.addEventListener('click', (e) => {
