@@ -5,7 +5,13 @@ function createPageStructure() {
   <main>
     <div class="wrapper">
      <div class="menu">
-       <button class="button" id="new-game">New game</button>
+       <div class="button mines-quantity">💣 10</div>
+       <div class="button flag">🚩</div>
+       <button class="button button-new-game" id="new-game">😁</button>
+       <div class="button timer">00:00</div>
+       <div class="button settings">
+         <i class="fa-solid fa-gear"></i>
+       </div>
      </div>   
       <div class="filled">
       </div>
