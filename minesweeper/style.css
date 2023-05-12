@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+button {
+  background-color: transparent;
+  border:none;
+}
+
 .body {
   display: flex;
   flex-direction: column;
@@ -21,6 +26,7 @@
   /* background-color:#00426f; */
   padding: 5px;
   border-radius:5px;
+  text-align: center;
 }
 
 .menu {
@@ -28,21 +34,28 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 5px;
-  font-size: 2rem;
-}
-
-.button {
-  padding: 5px 7px;
-  border: 3px ridge #ffffff;
-  background-color:#83cdff;
+  font-size: 1rem;
   color: #e00000;
 }
 
-.button-new-game {
- background-color: transparent;
- border:none;
- font-size: 3rem;
+.submenu {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
 }
+
+.button {
+  padding: 3px 8px;
+  border: 3px ridge #ffffff;
+  background-color:#83cdff;
+}
+
+.button-new-game {
+  justify-self: center;
+  font-size: 2rem;
+ }
 
 .settings{
   color:#00426f;
@@ -79,9 +92,21 @@
 @media (min-width:500px) {
 
   .wrapper {
-    padding: 20px;
+    padding: 10px 20px 20px;
     border-radius: 10px;
   }
+
+  .menu {
+    font-size: 2rem;
+  }
+
+  .submenu {
+    width: 160px;
+  }
+
+  .button-new-game {
+    font-size: 3rem;
+   }
 
   .filled {
     grid-gap: 3px;

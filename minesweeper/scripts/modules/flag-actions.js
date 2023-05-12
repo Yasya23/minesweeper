@@ -19,7 +19,7 @@ function addFlag(id) {
     element.classList.add('flaged');
     element.textContent = '🚩';
     bombCounter('minus');
-  };
+  }
 }
 
 function removeFlag(id) {

@@ -14,12 +14,14 @@ function updateBobmQuantity(value) {
 }
 
 function bombCounter(value) {
-  if (value === 'plus' || value === 'minus') {
-    const number = (value === 'plus') ? 1 : -1;
-    countBomb += number;
-    const counterHtml = document.getElementById('bomb-counter');
-    counterHtml.textContent = countBomb;
+  let number = 0;
+  if (value === 'plus') {
+    number = 1;
+  } else if (value === 'minus') {
+    number = -1;
   }
+  countBomb += number;
+  document.getElementById('bomb-counter').textContent = countBomb;
 }
 
 export {

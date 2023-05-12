@@ -4,15 +4,18 @@ function createPageStructure() {
   <h1>Game</h1>
   <main>
     <div class="wrapper">
-     <div class="menu">
-       <div class="button mines-quantity">💣 <span id="bomb-counter">10</span></div>
-       <div class="button flag" id="flag">🚩</div>
-       <button class="button button-new-game" id="new-game">😁</button>
-       <div class="button timer">00:00</div>
-       <div class="button settings">
-         <i class="fa-solid fa-gear"></i>
-       </div>
-     </div>   
+      <button class="settings" id="settings">Game settings</button>
+      <div class="menu">
+        <div class="submenu">
+          <div class="mines-quantity">💣 <span id="bomb-counter">10</span></div>
+          <div class="button flag" id="flag">🚩</div>
+        </div>
+        <button class="button-new-game" id="new-game">😁</button>
+        <div class="submenu">
+          <div class="timer">00:00</div>
+          <div class="clicked">0</div>
+        </div>
+      </div>
       <div class="filled">
       </div>
     </div>
