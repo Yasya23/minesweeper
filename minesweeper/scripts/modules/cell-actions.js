@@ -23,6 +23,7 @@ function isSimpleCellClicked(array, id) {
   neighbors.forEach((neighbor) => {
     const neighborValue = array[neighbor];
     if (neighborValue === 'bomb') return;
+    if (neighborValue === 'flaged') return;
     if (neighborValue.slice(0, -1) === 'number') {
       showNumberCell(neighbor, neighborValue.slice(-1), neighborValue);
       document.getElementById(neighbor).classList.add('clicked');

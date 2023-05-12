@@ -48,6 +48,10 @@
   color:#00426f;
 }
 
+.flag-active {
+  background-color:#fdf96c;
+}
+
 .filled {
   max-width: 620px;
   max-height: auto;

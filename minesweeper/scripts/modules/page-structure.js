@@ -5,8 +5,8 @@ function createPageStructure() {
   <main>
     <div class="wrapper">
      <div class="menu">
-       <div class="button mines-quantity">💣 10</div>
-       <div class="button flag">🚩</div>
+       <div class="button mines-quantity">💣 <span id="bomb-counter">10</span></div>
+       <div class="button flag" id="flag">🚩</div>
        <button class="button button-new-game" id="new-game">😁</button>
        <div class="button timer">00:00</div>
        <div class="button settings">

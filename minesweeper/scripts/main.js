@@ -4,7 +4,13 @@ import {
   updateIsFirstClick,
   returnIsFirstClick,
 } from './modules/first-click.js';
-import handleCellAction from './modules/handle-cell-actions.js';
+import handleCellAction from './modules/cell-actions.js';
+import {
+  returnIsFlag,
+  updateIsFlag,
+  addFlag,
+  removeFlag,
+} from './modules/flag-actions.js';
 
 function actionsWithCells(id) {
   if (!returnIsFirstClick()) {
@@ -20,8 +26,13 @@ function init() {
 }
 
 document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('cell')) actionsWithCells(e.target.id);
   if (e.target.id === 'new-game') createCells();
+  if (e.target.id === 'flag') updateIsFlag();
+  if (e.target.classList.contains('cell') && !returnIsFlag() && !e.target.classList.contains('flaged')) {
+    actionsWithCells(e.target.id);
+  }
+  if (!returnIsFlag() && e.target.classList.contains('flaged')) removeFlag(e.target.id);
+  if (returnIsFlag() && e.target.classList.contains('cell')) addFlag(e.target.id);
 });
 
 init();
