@@ -9,6 +9,9 @@ function createPageStructure() {
        <option value="meduim">Medium</option>
        <option value="hard">Hard</option>
     </select>
+    <label for="bombs-quantity">Bombs:</label>
+    <input type="range" id="bombs-quantity" min="10" max="99" step="1">
+    <output id="rangevalue">10</output>   
     <div class="wrapper">
       <div class="menu">
         <div class="submenu">

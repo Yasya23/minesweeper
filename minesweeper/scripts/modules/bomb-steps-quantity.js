@@ -1,4 +1,7 @@
-let bombQuantity = 10;
+const MIN_BOMBS = 10;
+// const MAX_BOMBS = 99;
+
+let bombQuantity = MIN_BOMBS;
 let countBomb = bombQuantity;
 let steps = 0;
 
@@ -11,6 +14,10 @@ function returnCauntBombValue() {
 }
 
 function updateBobmQuantity(value) {
+  bombQuantity = value;
+}
+
+function changeBombQuantity(value) {
   bombQuantity = value;
 }
 
@@ -36,4 +43,5 @@ export {
   bombCounter,
   returnCauntBombValue,
   stepsCounter,
+  changeBombQuantity,
 };

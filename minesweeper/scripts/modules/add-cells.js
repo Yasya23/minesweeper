@@ -1,9 +1,8 @@
 import { returnIsFirstClick, returnElementId } from './first-click.js';
 import { returnLevel } from './levels-actions.js';
+import { returnBobmQuantity } from './bomb-steps-quantity.js';
 
 let finishArray = [];
-
-const bombQuantity = 10;
 
 function getNeighbors(index) {
   const level = returnLevel();
@@ -51,6 +50,7 @@ function addCellsToHtml(array) {
 }
 
 function createCells() {
+  const bombQuantity = returnBobmQuantity();
   const level = returnLevel();
   const quantity = level ** 2;
   const cellQuantity = quantity - bombQuantity;
@@ -81,7 +81,6 @@ function createCells() {
   } else {
     finishArray = new Array(level * level).fill('');
   }
-
   addCellsToHtml(finishArray);
 }
 

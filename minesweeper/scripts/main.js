@@ -12,7 +12,7 @@ import {
   removeFlag,
 } from './modules/flag-actions.js';
 
-import { stepsCounter } from './modules/bomb-steps-quantity.js';
+import { stepsCounter, changeBombQuantity } from './modules/bomb-steps-quantity.js';
 import { changeLevel } from './modules/levels-actions.js';
 
 function actionsWithCells(id) {
@@ -44,6 +44,14 @@ document.addEventListener('change', (e) => {
     changeLevel(e.target.value);
     createCells();
   }
+  if (e.target.id === 'bombs-quantity') {
+    changeBombQuantity(Number(e.target.value));
+  }
+});
+
+document.addEventListener('input', (e) => {
+  e.preventDefault();
+  document.getElementById('rangevalue').textContent = e.target.value;
 });
 
 init();
