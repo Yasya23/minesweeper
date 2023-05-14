@@ -30,15 +30,10 @@ function stepsCounter() {
   document.getElementById('steps').textContent = steps;
 }
 
-function returnStepsQuantity() {
-  return steps;
-}
-
 export {
   returnBobmQuantity,
   updateBobmQuantity,
   bombCounter,
   returnCauntBombValue,
   stepsCounter,
-  returnStepsQuantity,
 };

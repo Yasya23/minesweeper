@@ -1,18 +1,12 @@
 import { returnIsFirstClick, returnElementId } from './first-click.js';
-
-const levels = {
-  easy: 10,
-  medium: 15,
-  hard: 25,
-};
+import { returnLevel } from './levels-actions.js';
 
 let finishArray = [];
-
-const level = 10;
 
 const bombQuantity = 10;
 
 function getNeighbors(index) {
+  const level = returnLevel();
   const row = Math.floor(index / level);
   const column = index % level;
   const indices = [-1, 0, 1];
@@ -38,6 +32,7 @@ function getNeighbors(index) {
 }
 
 function addCellsToHtml(array) {
+  const level = returnLevel();
   const filled = document.querySelector('.filled');
   let cellsHtml = '';
   array.forEach((_, index) => {
@@ -56,6 +51,7 @@ function addCellsToHtml(array) {
 }
 
 function createCells() {
+  const level = returnLevel();
   const quantity = level ** 2;
   const cellQuantity = quantity - bombQuantity;
   if (returnIsFirstClick()) {

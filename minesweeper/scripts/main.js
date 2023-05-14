@@ -13,6 +13,7 @@ import {
 } from './modules/flag-actions.js';
 
 import { stepsCounter } from './modules/bomb-steps-quantity.js';
+import { changeLevel } from './modules/levels-actions.js';
 
 function actionsWithCells(id) {
   if (!returnIsFirstClick()) {
@@ -36,6 +37,13 @@ document.addEventListener('click', (e) => {
   }
   if (!returnIsFlag() && e.target.classList.contains('flaged')) removeFlag(e.target.id);
   if (returnIsFlag() && e.target.classList.contains('cell')) addFlag(e.target.id);
+});
+
+document.addEventListener('change', (e) => {
+  if (e.target.id === 'level') {
+    changeLevel(e.target.value);
+    createCells();
+  }
 });
 
 init();

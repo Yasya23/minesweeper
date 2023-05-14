@@ -3,8 +3,13 @@ function createPageStructure() {
   body.innerHTML = `
   <h1>Game</h1>
   <main>
+  <label for="level">Level:</label>
+     <select id="level">
+       <option value="easy">Easy</option>
+       <option value="meduim">Medium</option>
+       <option value="hard">Hard</option>
+    </select>
     <div class="wrapper">
-      <button class="settings" id="settings">Game settings</button>
       <div class="menu">
         <div class="submenu">
           <div class="mines-quantity">💣 <span id="bomb-counter">10</span></div>
