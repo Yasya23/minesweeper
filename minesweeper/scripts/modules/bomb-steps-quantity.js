@@ -1,5 +1,6 @@
 let bombQuantity = 10;
 let countBomb = bombQuantity;
+let steps = 0;
 
 function returnBobmQuantity() {
   return bombQuantity;
@@ -24,9 +25,20 @@ function bombCounter(value) {
   document.getElementById('bomb-counter').textContent = countBomb;
 }
 
+function stepsCounter() {
+  steps += 1;
+  document.getElementById('steps').textContent = steps;
+}
+
+function returnStepsQuantity() {
+  return steps;
+}
+
 export {
   returnBobmQuantity,
   updateBobmQuantity,
   bombCounter,
   returnCauntBombValue,
+  stepsCounter,
+  returnStepsQuantity,
 };

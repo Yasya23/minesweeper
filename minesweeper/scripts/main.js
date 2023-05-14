@@ -12,6 +12,8 @@ import {
   removeFlag,
 } from './modules/flag-actions.js';
 
+import { stepsCounter } from './modules/bomb-steps-quantity.js';
+
 function actionsWithCells(id) {
   if (!returnIsFirstClick()) {
     updateIsFirstClick(id);
@@ -29,6 +31,7 @@ document.addEventListener('click', (e) => {
   if (e.target.id === 'new-game') createCells();
   if (e.target.id === 'flag') updateIsFlag();
   if (e.target.classList.contains('cell') && !returnIsFlag() && !e.target.classList.contains('flaged')) {
+    if (!e.target.classList.contains('clicked')) stepsCounter();
     actionsWithCells(e.target.id);
   }
   if (!returnIsFlag() && e.target.classList.contains('flaged')) removeFlag(e.target.id);

@@ -3,7 +3,7 @@ import { returnFinishArray, getNeighbors } from './add-cells.js';
 function showNumberCell(id, textContent, value) {
   const element = document.getElementById(id);
   element.textContent = textContent;
-  element.classList.add(value);
+  element.classList.add(value, 'clicked');
 }
 
 function showAllCells(array) {
@@ -41,7 +41,6 @@ function handleCellAction(id) {
   const cellValue = array[id];
 
   if (cellValue === 'bomb') {
-    console.log('Game over');
     showAllCells(array);
   } else if (cellValue.slice(0, -1) === 'number') {
     const number = cellValue.slice(-1);

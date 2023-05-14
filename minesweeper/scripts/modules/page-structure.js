@@ -13,7 +13,7 @@ function createPageStructure() {
         <button class="button-new-game" id="new-game">😁</button>
         <div class="submenu">
           <div class="timer">00:00</div>
-          <div class="clicked">0</div>
+          <div class="steps" id="steps">0</div>
         </div>
       </div>
       <div class="filled">

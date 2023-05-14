@@ -1,4 +1,4 @@
-import { bombCounter, returnCauntBombValue } from './bomb-quantity.js';
+import { bombCounter, returnCauntBombValue } from './bomb-steps-quantity.js';
 
 let isFlag = false;
 
