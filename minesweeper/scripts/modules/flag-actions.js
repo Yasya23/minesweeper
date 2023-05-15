@@ -17,14 +17,14 @@ function addFlag(id) {
   const bombsNumber = returnCauntBombValue();
   if (bombsNumber > 0) {
     element.classList.add('flaged');
-    element.textContent = '🚩';
+    element.innerHTML = '<i class="fa-solid fa-flag"></i>';
     bombCounter('minus');
   }
 }
 
 function removeFlag(id) {
   const element = document.getElementById(id);
-  element.textContent = '';
+  element.innerHTML = '';
   element.classList.remove('flaged');
   bombCounter('plus');
 }

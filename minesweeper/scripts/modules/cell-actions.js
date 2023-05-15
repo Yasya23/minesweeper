@@ -12,7 +12,7 @@ function showAllCells(array) {
     const element = cell;
     if (array[index] === 'bomb') {
       element.classList.add(array[index]);
-      element.textContent = '💣';
+      element.innerHTML = '<i class="fa-solid fa-bomb"></i>';
     }
   });
 }

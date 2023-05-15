@@ -1,34 +1,73 @@
-function createPageStructure() {
-  const body = document.querySelector('body');
-  body.innerHTML = `
-  <h1>Game</h1>
-  <main>
-  <label for="level">Level:</label>
-     <select id="level">
+function createHeader() {
+  const gameRules = '<a href="">How to play</a>';
+  const history = '<button>History</button>';
+  const levels = `<div>
+    <label for="level">Level:</label>
+      <select id="level">
        <option value="easy">Easy</option>
        <option value="meduim">Medium</option>
        <option value="hard">Hard</option>
-    </select>
+     </select>
+   </div>`;
+  const bombQuantity = `<div>
     <label for="bombs-quantity">Bombs:</label>
     <input type="range" id="bombs-quantity" min="10" max="99" step="1">
-    <output id="rangevalue">10</output>   
-    <div class="wrapper">
-      <div class="menu">
-        <div class="submenu">
-          <div class="mines-quantity">💣 <span id="bomb-counter">10</span></div>
-          <div class="button flag" id="flag">🚩</div>
-        </div>
-        <button class="button-new-game" id="new-game">😁</button>
-        <div class="submenu">
-          <div class="timer">00:00</div>
-          <div class="steps" id="steps">0</div>
-        </div>
-      </div>
-      <div class="filled">
-      </div>
-    </div>
-  </main>
-  <footer>footer</footer>
+    <output id="rangevalue">10</output>
+   </div>`;
+  const sound = '<div class="sound"><i class="fa-solid fa-volume-high"></i></div>';
+  const theme = '<div>Theme</div>';
+  const headerContent = [gameRules, history, levels, bombQuantity, sound, theme].join('');
+  const header = `<header class="header"> 
+    <div class="header-wrapper">${headerContent}</div>
+  </header>`;
+  return header;
+}
+
+function createMainContent() {
+  const minesQuantity = `<div class="mines-quantity">
+    <i class="fa-solid fa-bomb"></i>
+    <span id="bomb-counter">10</span>
+  </div>`;
+  const flag = `<div class="button flag" id="flag">
+    <i class="fa-solid fa-flag"></i>
+   </div>
+  </div>`;
+  const newGameBtn = `<button class="button-new-game" id="new-game">
+    <i class="fa-regular fa-face-smile"></i>
+  </button>`;
+  const timer = '<div class="timer">00:00</div>';
+  const steps = '<div class="steps" id="steps">0</div>';
+  const menu = `<div class="menu">
+  <div class="submenu">
+    ${minesQuantity}
+    ${flag}
+    ${newGameBtn}
+  <div class="submenu">
+    ${timer}
+    ${steps}
+  </div>
+ </div>`;
+  const field = '<div class="filled"></div>';
+  const main = `<main>
+   <div class="wrapper">
+    ${menu}
+    ${field}
+   </div>
+  </main>`;
+  return main;
+}
+
+function createPageStructure() {
+  const body = document.querySelector('body');
+  const header = createHeader();
+  const main = createMainContent();
+  const title = '<h1 class="title">Game</h1>';
+  const footer = '<footer>footer</footer>';
+  body.innerHTML = `
+  ${header}
+  ${title}
+  ${main}
+  ${footer}
   `;
 }
 

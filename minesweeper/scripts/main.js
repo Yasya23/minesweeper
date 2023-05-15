@@ -12,7 +12,7 @@ import {
   removeFlag,
 } from './modules/flag-actions.js';
 
-import { stepsCounter, changeBombQuantity } from './modules/bomb-steps-quantity.js';
+import { stepsCounter, changeBombQuantity, blockChooseBombs } from './modules/bomb-steps-quantity.js';
 import { changeLevel } from './modules/levels-actions.js';
 
 function actionsWithCells(id) {
@@ -29,29 +29,31 @@ function init() {
 }
 
 document.addEventListener('click', (e) => {
-  if (e.target.id === 'new-game') createCells();
-  if (e.target.id === 'flag') updateIsFlag();
-  if (e.target.classList.contains('cell') && !returnIsFlag() && !e.target.classList.contains('flaged')) {
-    if (!e.target.classList.contains('clicked')) stepsCounter();
-    actionsWithCells(e.target.id);
+  const { classList, id } = e.target;
+  if (id === 'new-game') createCells();
+  if (id === 'flag') updateIsFlag();
+  if (classList.contains('cell') && !returnIsFlag() && !classList.contains('flaged')) {
+    if (!classList.contains('clicked')) stepsCounter();
+    actionsWithCells(id);
+    blockChooseBombs();
   }
-  if (!returnIsFlag() && e.target.classList.contains('flaged')) removeFlag(e.target.id);
-  if (returnIsFlag() && e.target.classList.contains('cell')) addFlag(e.target.id);
+  if (!returnIsFlag() && classList.contains('flaged')) removeFlag(id);
+  if (returnIsFlag() && classList.contains('cell')) addFlag(id);
 });
 
 document.addEventListener('change', (e) => {
-  if (e.target.id === 'level') {
-    changeLevel(e.target.value);
+  const { id, value } = e.target;
+  if (id === 'level') {
+    changeLevel(value);
     createCells();
   }
-  if (e.target.id === 'bombs-quantity') {
-    changeBombQuantity(Number(e.target.value));
-  }
+  if (id === 'bombs-quantity') changeBombQuantity(Number(value));
 });
 
 document.addEventListener('input', (e) => {
   e.preventDefault();
-  document.getElementById('rangevalue').textContent = e.target.value;
+  const { id, value } = e.target;
+  if (id === 'bombs-quantity') document.getElementById('rangevalue').textContent = value;
 });
 
 init();

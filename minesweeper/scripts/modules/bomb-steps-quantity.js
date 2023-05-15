@@ -32,6 +32,10 @@ function bombCounter(value) {
   document.getElementById('bomb-counter').textContent = countBomb;
 }
 
+function blockChooseBombs() {
+  document.getElementById('bombs-quantity').disabled = true;
+}
+
 function stepsCounter() {
   steps += 1;
   document.getElementById('steps').textContent = steps;
@@ -44,4 +48,5 @@ export {
   returnCauntBombValue,
   stepsCounter,
   changeBombQuantity,
+  blockChooseBombs,
 };
