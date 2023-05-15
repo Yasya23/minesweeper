@@ -57,6 +57,9 @@ function createMainContent() {
   return main;
 }
 
+// function createModalsWindows() {
+// }
+
 function createPageStructure() {
   const body = document.querySelector('body');
   const header = createHeader();

@@ -38,7 +38,6 @@ function isSimpleCellClicked(array, id) {
 
 function handleCellAction(id) {
   const array = returnFinishArray();
-  console.log(array);
   const cellValue = array[id];
   if (cellValue === 'bomb') {
     showAllCells(array);

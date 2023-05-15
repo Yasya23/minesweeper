@@ -13,7 +13,6 @@ function returnIsFlag() {
 }
 
 function addFlag(id) {
-  console.log(id);
   const element = document.getElementById(id);
   const bombsNumber = returnCauntBombValue();
   if (bombsNumber > 0) {
