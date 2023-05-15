@@ -12,7 +12,13 @@ import {
   removeFlag,
 } from './modules/flag-actions.js';
 
-import { stepsCounter, changeBombQuantity, blockChooseBombs } from './modules/bomb-steps-quantity.js';
+import {
+  stepsCounter,
+  changeBombQuantity,
+  blockChooseBombs,
+  resetStepsCounter,
+} from './modules/bomb-steps-quantity.js';
+
 import { changeLevel } from './modules/levels-actions.js';
 
 function actionsWithCells(id) {
@@ -29,15 +35,23 @@ function init() {
 }
 
 document.addEventListener('click', (e) => {
-  const { classList, id } = e.target;
-  if (id === 'new-game') createCells();
+  const { id } = e.target.dataset;
+  const { classList, parentElement } = e.target;
+  if (id === 'new-game') {
+    createCells();
+    resetStepsCounter();
+  }
   if (id === 'flag') updateIsFlag();
-  if (classList.contains('cell') && !returnIsFlag() && !classList.contains('flaged')) {
+  if (classList.contains('cell') && !returnIsFlag() && (!classList.contains('flaged') || !parentElement.closest('.flaged'))) {
     if (!classList.contains('clicked')) stepsCounter();
     actionsWithCells(id);
     blockChooseBombs();
   }
-  if (!returnIsFlag() && classList.contains('flaged')) removeFlag(id);
+
+  if (!returnIsFlag() && (classList.contains('flaged') || parentElement.closest('.flaged'))) {
+    removeFlag(id);
+  }
+
   if (returnIsFlag() && classList.contains('cell')) addFlag(id);
 });
 

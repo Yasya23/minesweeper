@@ -35,7 +35,7 @@ function addCellsToHtml(array) {
   const filled = document.querySelector('.filled');
   let cellsHtml = '';
   array.forEach((_, index) => {
-    const cellHtml = `<div class="cell" id=${index}></div>`;
+    const cellHtml = `<div class="cell" id=${index} data-id=${index}></div>`;
     const isFirstCellInRow = index % level === 0;
     const isLastCellInRow = (index + 1) % level === 0;
     if (isFirstCellInRow) {

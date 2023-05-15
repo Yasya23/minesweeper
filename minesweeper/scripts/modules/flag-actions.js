@@ -3,7 +3,7 @@ import { bombCounter, returnCauntBombValue } from './bomb-steps-quantity.js';
 let isFlag = false;
 
 function updateIsFlag() {
-  const flag = document.getElementById('flag');
+  const flag = document.querySelector('.flag');
   flag.classList.toggle('flag-active');
   isFlag = !isFlag;
 }
@@ -13,11 +13,12 @@ function returnIsFlag() {
 }
 
 function addFlag(id) {
+  console.log(id);
   const element = document.getElementById(id);
   const bombsNumber = returnCauntBombValue();
   if (bombsNumber > 0) {
     element.classList.add('flaged');
-    element.innerHTML = '<i class="fa-solid fa-flag"></i>';
+    element.innerHTML = `<i data-id=${id} class="fa-solid fa-flag"></i>`;
     bombCounter('minus');
   }
 }

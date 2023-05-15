@@ -28,12 +28,12 @@ function createMainContent() {
     <i class="fa-solid fa-bomb"></i>
     <span id="bomb-counter">10</span>
   </div>`;
-  const flag = `<div class="button flag" id="flag">
-    <i class="fa-solid fa-flag"></i>
+  const flag = `<div class="button flag" data-id="flag">
+    <i data-id="flag" class="fa-solid fa-flag"></i>
    </div>
   </div>`;
-  const newGameBtn = `<button class="button-new-game" id="new-game">
-    <i class="fa-regular fa-face-smile"></i>
+  const newGameBtn = `<button class="button-new-game" data-id="new-game">
+    <i data-id="new-game" class="fa-regular fa-face-smile"></i>
   </button>`;
   const timer = '<div class="timer">00:00</div>';
   const steps = '<div class="steps" id="steps">0</div>';

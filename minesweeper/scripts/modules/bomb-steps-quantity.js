@@ -41,6 +41,11 @@ function stepsCounter() {
   document.getElementById('steps').textContent = steps;
 }
 
+function resetStepsCounter() {
+  steps = 0;
+  document.getElementById('steps').textContent = steps;
+}
+
 export {
   returnBobmQuantity,
   updateBobmQuantity,
@@ -49,4 +54,5 @@ export {
   stepsCounter,
   changeBombQuantity,
   blockChooseBombs,
+  resetStepsCounter,
 };
