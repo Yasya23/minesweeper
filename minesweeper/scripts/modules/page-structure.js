@@ -28,8 +28,8 @@ function createMainContent() {
     <i class="fa-solid fa-bomb"></i>
     <span id="bomb-counter">10</span>
   </div>`;
-  const flag = `<div class="button flag" data-id="flag">
-    <i data-id="flag" class="fa-solid fa-flag"></i>
+  const flag = `<div role="button" aria-label="Place Flag" tabindex="0" class="button flag" data-id="flag">
+  <i data-id="flag" class="fa-solid fa-flag"></i>
    </div>
   </div>`;
   const newGameBtn = `<button class="button-new-game" data-id="new-game">
