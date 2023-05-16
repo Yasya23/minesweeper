@@ -22,4 +22,8 @@ function returnLevel() {
   return level;
 }
 
-export { changeLevel, returnLevel };
+function blockedChooseLevel(value) {
+  document.getElementById('level').disabled = value;
+}
+
+export { changeLevel, returnLevel, blockedChooseLevel };

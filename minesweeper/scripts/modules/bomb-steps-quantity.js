@@ -9,7 +9,6 @@ let countBomb = bombQuantity;
 
 function bombsOnTheField() {
   const level = returnLevel();
-  console.log(level);
   let result;
   if (level === 10) {
     result = 10;
@@ -23,7 +22,6 @@ function bombsOnTheField() {
 
 function updateBobmsOnTheFieldValue() {
   bombQuantity = bombsOnTheField();
-  return bombQuantity;
 }
 
 function returnBobmQuantity() {
@@ -53,8 +51,8 @@ function bombCounter(value) {
   document.getElementById('bomb-counter').textContent = countBomb;
 }
 
-function blockChooseBombs() {
-  document.getElementById('bombs-quantity').disabled = true;
+function blockChooseBombs(value) {
+  document.getElementById('bombs-quantity').disabled = value;
 }
 
 function stepsCounter() {

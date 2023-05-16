@@ -31,7 +31,8 @@ function getNeighbors(index) {
 }
 
 function addCellsToHtml(array) {
-  const flagged = Array.from(document.querySelectorAll('.flaged')).map((el) => el.id);
+  let flagged = [];
+  if (returnIsFirstClick) flagged = Array.from(document.querySelectorAll('.flaged')).map((el) => el.id);
   const level = returnLevel();
   const filled = document.querySelector('.filled');
   let cellsHtml = '';
@@ -48,11 +49,13 @@ function addCellsToHtml(array) {
     }
   });
   filled.innerHTML = cellsHtml;
-  flagged.forEach((el) => {
-    const element = document.getElementById(el);
-    element.classList.add('flaged');
-    element.innerHTML = '<i data-id="flag" class="fa-solid fa-flag"></i>';
-  });
+  if (flagged.length > 0) {
+    flagged.forEach((el) => {
+      const element = document.getElementById(el);
+      element.classList.add('flaged');
+      element.innerHTML = '<i data-id="flag" class="fa-solid fa-flag"></i>';
+    });
+  }
 }
 
 function createCells() {

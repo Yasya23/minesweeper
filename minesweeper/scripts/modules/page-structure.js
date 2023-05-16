@@ -57,8 +57,14 @@ function createMainContent() {
   return main;
 }
 
-// function createModalsWindows() {
-// }
+function createModalsWindow() {
+  const modal = `<div class="modal" id="modal">
+  <i class="fa-solid fa-xmark" id="close-modal"></i>
+  <p class="modal-message" id="modal-message"></p>
+  <button class="modal-agree-btn" id="modal-agree-btn">New game</button>
+  </div>`;
+  return modal;
+}
 
 function createPageStructure() {
   const body = document.querySelector('body');
@@ -66,11 +72,13 @@ function createPageStructure() {
   const main = createMainContent();
   const title = '<h1 class="title">Game</h1>';
   const footer = '<footer>footer</footer>';
+  const modal = createModalsWindow();
   body.innerHTML = `
   ${header}
   ${title}
   ${main}
   ${footer}
+  ${modal}
   `;
 }
 

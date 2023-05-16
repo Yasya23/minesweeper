@@ -17,13 +17,14 @@ import {
   changeBombQuantity,
   blockChooseBombs,
   resetStepsCounter,
-  returnBobmQuantity,
   updateBobmsOnTheFieldValue,
+  returnBobmQuantity,
 } from './modules/bomb-steps-quantity.js';
 
-import { changeLevel } from './modules/levels-actions.js';
+import { changeLevel, blockedChooseLevel } from './modules/levels-actions.js';
 
 import { startTimer, resetTimer } from './modules/timer.js';
+import { actionsWithModalWindow } from './modules/modal-window.js';
 
 function actionsWithCells(id) {
   if (!returnIsFirstClick()) {
@@ -33,50 +34,57 @@ function actionsWithCells(id) {
   handleCellAction(id);
 }
 
-function init() {
-  createPageStructure();
-  createCells();
-}
-
-document.addEventListener('click', (e) => {
-  const { id } = e.target.dataset;
-  const { classList, parentElement } = e.target;
-  if (id === 'new-game') {
+function handleClickActions(e) {
+  const { id: idData } = e.target.dataset;
+  const { id, classList, parentElement } = e.target;
+  if (idData === 'new-game') {
     createCells();
     resetStepsCounter();
     resetTimer();
+    blockChooseBombs(false);
+    blockedChooseLevel(false);
   }
-  if (id === 'flag') updateIsFlag();
-  if (classList.contains('cell') && !returnIsFlag() && (!classList.contains('flaged') && !parentElement.closest('flaged'))) {
+  if (parentElement.closest('.modal')) actionsWithModalWindow(id);
+  if (idData === 'flag') updateIsFlag();
+  if (classList.contains('cell') && !returnIsFlag() && (!parentElement.closest('flaged'))) {
     if (!classList.contains('clicked')) stepsCounter();
-    actionsWithCells(id);
-    blockChooseBombs();
     startTimer();
+    actionsWithCells(idData);
+    blockChooseBombs(true);
+    blockedChooseLevel(true);
+  }
+  if (!returnIsFlag() && (classList.contains('flaged') && parentElement.closest('.flaged'))) {
+    removeFlag(idData);
   }
 
-  if (!returnIsFlag() && (classList.contains('flaged') || parentElement.closest('flaged'))) {
-    removeFlag(id);
-  }
+  if (returnIsFlag() && classList.contains('cell')) addFlag(idData);
+}
 
-  if (returnIsFlag() && classList.contains('cell')) addFlag(id);
-});
-
-document.addEventListener('change', (e) => {
+function handleCnahgeActions(e) {
   const { id, value } = e.target;
   if (id === 'level') {
     changeLevel(value);
     createCells();
     resetStepsCounter();
-    console.log(returnBobmQuantity());
-    document.getElementById('rangevalue').textContent = updateBobmsOnTheFieldValue();
+    updateBobmsOnTheFieldValue();
+    document.getElementById('rangevalue').textContent = returnBobmQuantity();
   }
   if (id === 'bombs-quantity') changeBombQuantity(Number(value));
-});
+}
 
-document.addEventListener('input', (e) => {
+function handleInputActions(e) {
   e.preventDefault();
   const { id, value } = e.target;
   if (id === 'bombs-quantity') document.getElementById('rangevalue').textContent = value;
-});
+}
+
+function init() {
+  createPageStructure();
+  createCells();
+}
+
+document.addEventListener('click', handleClickActions);
+document.addEventListener('change', handleCnahgeActions);
+document.addEventListener('input', handleInputActions);
 
 init();
