@@ -17,6 +17,8 @@ import {
   changeBombQuantity,
   blockChooseBombs,
   resetStepsCounter,
+  returnBobmQuantity,
+  updateBobmsOnTheFieldValue,
 } from './modules/bomb-steps-quantity.js';
 
 import { changeLevel } from './modules/levels-actions.js';
@@ -65,6 +67,8 @@ document.addEventListener('change', (e) => {
     changeLevel(value);
     createCells();
     resetStepsCounter();
+    console.log(returnBobmQuantity());
+    document.getElementById('rangevalue').textContent = updateBobmsOnTheFieldValue();
   }
   if (id === 'bombs-quantity') changeBombQuantity(Number(value));
 });
