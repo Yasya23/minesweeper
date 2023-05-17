@@ -19,6 +19,7 @@ import {
   resetStepsCounter,
   updateBobmsOnTheFieldValue,
   returnBobmQuantity,
+  calculateRangeOnThePage,
 } from './modules/bomb-steps-quantity.js';
 
 import { changeLevel, blockedChooseLevel } from './modules/levels-actions.js';
@@ -69,17 +70,24 @@ function handleCnahgeActions(e) {
     updateBobmsOnTheFieldValue();
     document.getElementById('rangevalue').textContent = returnBobmQuantity();
   }
-  if (id === 'bombs-quantity') changeBombQuantity(Number(value));
+  if (id === 'bombs-quantity') {
+    changeBombQuantity(Number(value));
+    calculateRangeOnThePage(Number(value));
+  }
 }
 
 function handleInputActions(e) {
   e.preventDefault();
   const { id, value } = e.target;
-  if (id === 'bombs-quantity') document.getElementById('rangevalue').textContent = value;
+  if (id === 'bombs-quantity') {
+    calculateRangeOnThePage(value);
+    document.getElementById('rangevalue').textContent = value;
+  }
 }
 
 function init() {
   createPageStructure();
+  calculateRangeOnThePage(20);
   createCells();
 }
 

@@ -1,6 +1,5 @@
 import { pauseTimer } from './timer.js';
-// const closeModalBtn = document.getElementById('close-modal');
-// const modalAgreeBtn = document.getElementById('modal-agree-btn');
+
 const gameOver = 'Game over';
 const win = 'Congratulations';
 // const confirmNewGame = 'Are you sure?';
@@ -12,27 +11,25 @@ function addModalMessage(message) {
 
 function showModalWindow(value) {
   pauseTimer();
-  if (value === 'bomb') addModalMessage(gameOver);
+  if (value === 'bomb') {
+    // document.querySelector('.button-img').src = 'img/corgi2.png';
+    addModalMessage(gameOver);
+  }
   if (value === 'win') addModalMessage(win);
-  const modalWindow = document.getElementById('modal');
+  // const modalWindow = document.getElementById('modal');
+  const modalWindow = document.querySelector('.modal-wrapper');
   modalWindow.style.display = 'block';
+  document.body.classList.add('no-scroll');
 }
 
 function closeModalWindow() {
-  const modalWindow = document.getElementById('modal');
+  const modalWindow = document.querySelector('.modal-wrapper');
   modalWindow.style.display = 'none';
+  document.body.classList.remove('no-scroll');
 }
 
 function actionsWithModalWindow(id) {
-  console.log(id);
   if (id === 'close-modal' || id === 'modal-agree-btn') closeModalWindow();
 }
 
-function isWin(element) {
-  console.log(element);
-  const cells = Array.from(document.querySelectorAll('.cell'));
-  const array = cells.filter((cell) => !cell.classList.contains('bomb') && !cell.classList.contains('clicked') && !cell === element);
-  if (array.length === 0) showModalWindow('win');
-}
-
-export { actionsWithModalWindow, showModalWindow, isWin };
+export { actionsWithModalWindow, showModalWindow};

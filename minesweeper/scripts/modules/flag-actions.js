@@ -17,7 +17,7 @@ function addFlag(id) {
   const bombsNumber = returnCauntBombValue();
   if (bombsNumber > 0) {
     element.classList.add('flaged');
-    element.innerHTML = `<i data-id=${id} class="fa-solid fa-flag"></i>`;
+    element.innerHTML = `<i data-id=${id} class="fa-solid fa-flag flag-icon"></i>`;
     bombCounter('minus');
   }
 }

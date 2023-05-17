@@ -1,6 +1,9 @@
 let hour = 0;
 let minutes = 0;
 let seconds = 0;
+const hourValue = hour ? `${hour}:` : '';
+const minutesValue = minutes < 10 ? `0${minutes}` : minutes;
+const secondsValue = seconds < 10 ? `0${seconds}` : seconds;
 let timeInterval;
 let isTimer = false;
 
@@ -9,9 +12,6 @@ function startTimer() {
     isTimer = true;
     const timer = document.querySelector('.timer');
     timeInterval = setInterval(() => {
-      const hourValue = hour ? `${hour}:` : '';
-      const minutesValue = minutes < 10 ? `0${minutes}` : minutes;
-      const secondsValue = seconds < 10 ? `0${seconds}` : seconds;
       timer.textContent = `${hourValue}${minutesValue}:${secondsValue}`;
       seconds += 1;
       if (seconds === 60) {
@@ -24,6 +24,10 @@ function startTimer() {
       }
     }, 1000);
   }
+}
+
+function returnTime() {
+ return `${hourValue}${minutesValue}:${secondsValue}`;
 }
 
 function pauseTimer() {
@@ -39,4 +43,4 @@ function resetTimer() {
   isTimer = false;
 }
 
-export { startTimer, resetTimer, pauseTimer };
+export { startTimer, resetTimer, pauseTimer, returnTime };

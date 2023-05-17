@@ -1,7 +1,19 @@
-import { returnLevel } from "./levels-actions";
-const results = [];
+import { returnLevel } from './levels-actions.js';
+import { returnTime } from './timer.js';
 
-function saveGameResults() {
- const level = returnLevel();
- 
+// const results = [];
+
+// function saveGameResults() {
+//  const level = returnLevel();
+
+// }
+
+function saveGameState() {
+  const gameState = {
+    level: returnLevel(),
+    cells: Array.from(document.querySelectorAll('.cell')),
+    timer: returnTime(),
+    // Other game state properties
+  };
+  localStorage.setItem('gameState', JSON.stringify(gameState));
 }

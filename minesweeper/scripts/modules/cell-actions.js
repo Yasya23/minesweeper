@@ -1,11 +1,19 @@
 import { returnFinishArray, getNeighbors } from './add-cells.js';
-import { isWin, showModalWindow } from './modal-window.js';
+import { returnBobmQuantity } from './bomb-steps-quantity.js';
+import { showModalWindow } from './modal-window.js';
+
+function checkOpenedCells() {
+  const cells = Array.from(document.querySelectorAll('.cell'));
+  const cellsWithoutBombs = cells.length - returnBobmQuantity();
+  const array = cells.filter((cell) => !cell.classList.contains('bomb') && cell.classList.contains('clicked'));
+  if (array.length === cellsWithoutBombs) showModalWindow('win');
+}
 
 function showNumberCell(id, textContent, value) {
   const element = document.getElementById(id);
   element.textContent = textContent;
   element.classList.add(value, 'clicked');
-  isWin(element);
+  checkOpenedCells();
 }
 
 function showAllCells(array) {
@@ -14,7 +22,7 @@ function showAllCells(array) {
     const element = cell;
     if (array[index] === 'bomb') {
       element.classList.add(array[index]);
-      element.innerHTML = '<i class="fa-solid fa-bomb"></i>';
+      element.innerHTML = '<i class="fa-solid fa-poo"></i>';
     }
   });
 }
@@ -26,7 +34,6 @@ function isSimpleCellClicked(array, id) {
     const neighborValue = array[neighbor];
     const flagged = document.getElementById(neighbor).classList.contains('flaged');
     if (neighborValue === 'bomb') return;
-    // if (neighborValue === 'flaged') return;
     if (neighborValue.slice(0, -1) === 'number' && !flagged) {
       showNumberCell(neighbor, neighborValue.slice(-1), neighborValue);
       document.getElementById(neighbor).classList.add('clicked');
@@ -37,6 +44,7 @@ function isSimpleCellClicked(array, id) {
       isSimpleCellClicked(array, neighbor);
     }
   });
+  checkOpenedCells();
 }
 
 function handleCellAction(id) {

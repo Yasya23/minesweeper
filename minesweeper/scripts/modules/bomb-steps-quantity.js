@@ -1,11 +1,18 @@
 import { returnLevel } from './levels-actions.js';
 
 const MIN_BOMBS = 10;
-// const MAX_BOMBS = 99;
+const MAX_BOMBS = 99;
 
 let steps = 0;
 let bombQuantity = MIN_BOMBS;
 let countBomb = bombQuantity;
+
+function calculateRangeOnThePage(value) {
+  const element = document.querySelector('.bomb-range');
+  const calculatePersents = ((value - MIN_BOMBS) * 100) / (MAX_BOMBS - MIN_BOMBS);
+  element.style.backgroundSize = `${calculatePersents}% 100%`;
+  element.value = value;
+}
 
 function bombsOnTheField() {
   const level = returnLevel();
@@ -17,6 +24,7 @@ function bombsOnTheField() {
   } else if (level === 25) {
     result = 99;
   }
+  calculateRangeOnThePage(result);
   return result;
 }
 
@@ -75,4 +83,5 @@ export {
   blockChooseBombs,
   resetStepsCounter,
   updateBobmsOnTheFieldValue,
+  calculateRangeOnThePage,
 };
