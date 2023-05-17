@@ -61,6 +61,10 @@ function handleClickActions(e) {
   if (returnIsFlag() && classList.contains('cell')) addFlag(idData);
 }
 
+function changeTheme() {
+  document.body.classList.toggle('dark');
+}
+
 function handleCnahgeActions(e) {
   const { id, value } = e.target;
   if (id === 'level') {
@@ -74,6 +78,7 @@ function handleCnahgeActions(e) {
     changeBombQuantity(Number(value));
     calculateRangeOnThePage(Number(value));
   }
+  if (id === 'theme-checkbox') changeTheme();
 }
 
 function handleInputActions(e) {

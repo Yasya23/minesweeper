@@ -15,7 +15,14 @@ function createHeader() {
     <output id="rangevalue">10</output>
    </div>`;
   const sound = '<div class="sound"><i class="fa-solid fa-volume-high"></i></div>';
-  const theme = '<div>Theme</div>';
+  const theme = `<div class="theme-wrapper">
+    <input type="checkbox" class="theme-checkbox" id="theme-checkbox">
+    <label for="theme-checkbox" class="theme-label">
+      <i class="fas fa-moon theme-moon-icon"></i>
+      <i class="fas fa-sun theme-sun-icon"></i>
+      <div class="theme-switcher"></div>
+    </label>
+  </div>`;
   const headerContent = [gameRules, history, levels, bombQuantity, sound, theme].join('');
   const header = `<header class="header"> 
     <div class="header-wrapper">${headerContent}</div>
@@ -74,13 +81,11 @@ function createPageStructure() {
   const header = createHeader();
   const main = createMainContent();
   const title = '<h1 class="title">Game</h1>';
-  const footer = '<footer>footer</footer>';
   const modal = createModalsWindow();
   body.innerHTML = `
   ${header}
   ${title}
   ${main}
-  ${footer}
   ${modal}
   `;
 }
