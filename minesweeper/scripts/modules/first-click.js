@@ -1,9 +1,9 @@
 let isFirstClick = false;
 let elementId = null;
 
-function updateIsFirstClick(value) {
-  isFirstClick = !isFirstClick;
-  elementId = value;
+function updateIsFirstClick(value1, value2) {
+  isFirstClick = value1;
+  elementId = value2;
 }
 
 function returnIsFirstClick() {

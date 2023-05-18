@@ -1,18 +1,22 @@
 let hour = 0;
 let minutes = 0;
 let seconds = 0;
-const hourValue = hour ? `${hour}:` : '';
-const minutesValue = minutes < 10 ? `0${minutes}` : minutes;
-const secondsValue = seconds < 10 ? `0${seconds}` : seconds;
 let timeInterval;
 let isTimer = false;
+
+function formatTime() {
+  const hourValue = hour ? `${hour}:` : '';
+  const minutesValue = minutes < 10 ? `0${minutes}` : minutes;
+  const secondsValue = seconds < 10 ? `0${seconds}` : seconds;
+  return `${hourValue}${minutesValue}:${secondsValue}`;
+}
 
 function startTimer() {
   if (!isTimer) {
     isTimer = true;
     const timer = document.querySelector('.timer');
     timeInterval = setInterval(() => {
-      timer.textContent = `${hourValue}${minutesValue}:${secondsValue}`;
+      timer.textContent = formatTime();
       seconds += 1;
       if (seconds === 60) {
         minutes += 1;
@@ -27,11 +31,12 @@ function startTimer() {
 }
 
 function returnTime() {
- return `${hourValue}${minutesValue}:${secondsValue}`;
+  return formatTime();
 }
 
 function pauseTimer() {
   clearInterval(timeInterval);
+  isTimer = false;
 }
 
 function resetTimer() {
@@ -43,4 +48,6 @@ function resetTimer() {
   isTimer = false;
 }
 
-export { startTimer, resetTimer, pauseTimer, returnTime };
+export {
+  startTimer, resetTimer, pauseTimer, returnTime,
+};

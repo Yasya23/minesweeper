@@ -1,22 +1,32 @@
-import { pauseTimer } from './timer.js';
-
-const gameOver = 'Game over';
-const win = 'Congratulations';
-// const confirmNewGame = 'Are you sure?';
+import newGame from './new-game.js';
+import { pauseTimer, returnTime } from './timer.js';
+import { returnSteps } from './bomb-steps-quantity.js';
+import { updateIsFirstClick } from './first-click.js';
+import data from './data.js';
 
 function addModalMessage(message) {
   const modalMessage = document.getElementById('modal-message');
   modalMessage.textContent = message;
 }
 
+function showWinMessage() {
+  const { modalWinMessage } = data.modal;
+  document.getElementById('modal-message').innerHTML = modalWinMessage;
+  document.querySelector('.modal-steps').textContent = returnSteps();
+  document.querySelector('.modal-timer').textContent = returnTime();
+}
+
+function showLoseMessage() {
+  const { modalLoseMessage } = data.modal;
+  document.getElementById('modal-message').innerHTML = modalLoseMessage;
+}
+
 function showModalWindow(value) {
   pauseTimer();
   if (value === 'bomb') {
-    // document.querySelector('.button-img').src = 'img/corgi2.png';
-    addModalMessage(gameOver);
+    showLoseMessage();
   }
-  if (value === 'win') addModalMessage(win);
-  // const modalWindow = document.getElementById('modal');
+  if (value === 'win') showWinMessage(win);
   const modalWindow = document.querySelector('.modal-wrapper');
   modalWindow.style.display = 'block';
   document.body.classList.add('no-scroll');
@@ -29,7 +39,15 @@ function closeModalWindow() {
 }
 
 function actionsWithModalWindow(id) {
-  if (id === 'close-modal' || id === 'modal-agree-btn') closeModalWindow();
+  if (id === 'close-modal') {
+    closeModalWindow();
+    updateIsFirstClick(false, null);
+    pauseTimer();
+  }
+  if (id === 'modal-agree-btn') {
+    closeModalWindow();
+    newGame();
+  }
 }
 
-export { actionsWithModalWindow, showModalWindow};
+export { actionsWithModalWindow, showModalWindow };

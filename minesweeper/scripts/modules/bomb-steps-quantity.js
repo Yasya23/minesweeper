@@ -68,6 +68,11 @@ function stepsCounter() {
   document.getElementById('steps').textContent = steps;
 }
 
+function returnSteps() {
+  console.log(steps);
+  return steps;
+}
+
 function resetStepsCounter() {
   steps = 0;
   document.getElementById('steps').textContent = steps;
@@ -84,4 +89,5 @@ export {
   resetStepsCounter,
   updateBobmsOnTheFieldValue,
   calculateRangeOnThePage,
+  returnSteps,
 };

@@ -1,6 +1,7 @@
 import { returnFinishArray, getNeighbors } from './add-cells.js';
 import { returnBobmQuantity } from './bomb-steps-quantity.js';
 import { showModalWindow } from './modal-window.js';
+import data from './data.js';
 
 function checkOpenedCells() {
   const cells = Array.from(document.querySelectorAll('.cell'));
@@ -22,7 +23,7 @@ function showAllCells(array) {
     const element = cell;
     if (array[index] === 'bomb') {
       element.classList.add(array[index]);
-      element.innerHTML = '<i class="fa-solid fa-poo"></i>';
+      element.innerHTML = data.bombIcon;
     }
   });
 }
