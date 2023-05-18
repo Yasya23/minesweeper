@@ -30,6 +30,7 @@ function bombsOnTheField() {
 
 function updateBobmsOnTheFieldValue() {
   bombQuantity = bombsOnTheField();
+  document.getElementById('bomb-counter').textContent = bombQuantity;
 }
 
 function returnBobmQuantity() {
@@ -46,6 +47,7 @@ function updateBobmQuantity(value) {
 
 function changeBombQuantity(value) {
   bombQuantity = value;
+  document.getElementById('bomb-counter').textContent = bombQuantity;
 }
 
 function bombCounter(value) {
