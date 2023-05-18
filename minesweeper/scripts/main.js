@@ -20,6 +20,8 @@ import {
   updateBobmsOnTheFieldValue,
   returnBobmQuantity,
   calculateRangeOnThePage,
+  returnSteps,
+  updateSteps,
 } from './modules/bomb-steps-quantity.js';
 
 import { changeLevel, blockedChooseLevel } from './modules/levels-actions.js';
@@ -31,7 +33,9 @@ import newGame from './modules/new-game.js';
 function actionsWithCells(id) {
   if (!returnIsFirstClick()) {
     resetTimer();
-    resetStepsCounter();
+    if (returnSteps() > 0) {
+      updateSteps(1);
+    }
     startTimer();
     updateIsFirstClick(true, id);
     createCells();
@@ -40,25 +44,28 @@ function actionsWithCells(id) {
 }
 
 function handleCellClick(classList, idData) {
-  actionsWithCells(idData);
+  if (!classList.contains('clicked')) stepsCounter();
+  actionsWithCells(idData, classList);
   blockChooseBombs(true);
   blockedChooseLevel(true);
-  if (!classList.contains('clicked')) stepsCounter();
 }
 
 function handleClickActions(e) {
   const { id: idData } = e.target.dataset;
   const { id, classList, parentElement } = e.target;
-  if (idData === 'new-game') newGame();
-  if (parentElement.closest('.modal')) actionsWithModalWindow(id);
-  if (idData === 'flag') updateIsFlag();
-  if (classList.contains('cell') && !returnIsFlag() && (!parentElement.closest('flaged'))) {
+  if (idData === 'new-game') {
+    newGame();
+  } else if (parentElement.closest('.modal')) {
+    actionsWithModalWindow(id);
+  } else if (idData === 'flag') {
+    updateIsFlag();
+  } else if (classList.contains('cell') && !returnIsFlag() && !parentElement.closest('.flaged')) {
     handleCellClick(classList, idData);
-  }
-  if (!returnIsFlag() && (classList.contains('flaged') && parentElement.closest('flaged'))) {
+  } else if (!returnIsFlag() && (classList.contains('flaged') || parentElement.closest('.flaged'))) {
     removeFlag(idData);
+  } else if (returnIsFlag() && classList.contains('cell') && !classList.contains('clicked')) {
+    addFlag(idData);
   }
-  if (returnIsFlag() && classList.contains('cell') && !classList.contains('clicked')) addFlag(idData);
 }
 
 function handleLevelChanged(value) {

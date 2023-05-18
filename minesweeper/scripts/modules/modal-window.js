@@ -4,11 +4,6 @@ import { returnSteps } from './bomb-steps-quantity.js';
 import { updateIsFirstClick } from './first-click.js';
 import data from './data.js';
 
-function addModalMessage(message) {
-  const modalMessage = document.getElementById('modal-message');
-  modalMessage.textContent = message;
-}
-
 function showWinMessage() {
   const { modalWinMessage } = data.modal;
   document.getElementById('modal-message').innerHTML = modalWinMessage;
@@ -26,7 +21,7 @@ function showModalWindow(value) {
   if (value === 'bomb') {
     showLoseMessage();
   }
-  if (value === 'win') showWinMessage(win);
+  if (value === 'win') showWinMessage();
   const modalWindow = document.querySelector('.modal-wrapper');
   modalWindow.style.display = 'block';
   document.body.classList.add('no-scroll');

@@ -14,7 +14,6 @@ button {
 }
 
 .body {
-  min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
   align-items: center;
   background: url('img/texture.png');
@@ -180,7 +179,7 @@ button {
   left:0;
   background-color: rgba(0, 0, 0, 0.138);
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 }
 
 .modal {
@@ -375,6 +374,11 @@ button {
 
   .filled {
     grid-gap: 3px;
+  }
+
+  .body.hard .filled,
+  .body.medium .filled {
+    grid-gap: 1px;
   }
 
   .cell {

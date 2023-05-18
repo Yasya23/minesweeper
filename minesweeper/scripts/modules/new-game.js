@@ -1,5 +1,5 @@
 import { createCells } from './add-cells.js';
-import { resetTimer } from './timer.js';
+import { resetTimer, pauseTimer } from './timer.js';
 import { blockChooseBombs, resetStepsCounter } from './bomb-steps-quantity.js';
 import { blockedChooseLevel } from './levels-actions.js';
 import { removeFlag } from './flag-actions.js';
@@ -9,6 +9,7 @@ function newGame() {
   updateIsFirstClick(false, null);
   document.querySelectorAll('.flaged').forEach((el) => removeFlag(el.id));
   resetStepsCounter();
+  pauseTimer();
   resetTimer();
   blockChooseBombs(false);
   blockedChooseLevel(false);
