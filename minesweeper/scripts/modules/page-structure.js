@@ -5,7 +5,7 @@ function createHeader() {
    <label for="level">Level:</label>
       <select id="level" class="level-select">
        <option value="easy">Easy</option>
-       <option value="meduim">Medium</option>
+       <option value="medium">Medium</option>
        <option value="hard">Hard</option>
      </select>
    </div>`;

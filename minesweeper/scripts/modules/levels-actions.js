@@ -6,6 +6,16 @@ const levels = {
 
 let level = levels.easy;
 
+function removeLevelClass() {
+  document.body.classList.remove('hard');
+  document.body.classList.remove('medium');
+}
+
+function addLevelClassToBody(value) {
+  removeLevelClass();
+  document.body.classList.add(value);
+}
+
 function changeValues(value) {
   level = value;
   const filled = document.querySelector('.filled');
@@ -13,9 +23,18 @@ function changeValues(value) {
 }
 
 function changeLevel(value) {
-  if (value === 'easy') changeValues(levels.easy);
-  if (value === 'meduim') changeValues(levels.medium);
-  if (value === 'hard') changeValues(levels.hard);
+  if (value === 'easy') {
+    changeValues(levels.easy);
+    removeLevelClass();
+  }
+  if (value === 'medium') {
+    changeValues(levels.medium);
+    addLevelClassToBody(value);
+  }
+  if (value === 'hard') {
+    changeValues(levels.hard);
+    addLevelClassToBody(value);
+  }
 }
 
 function returnLevel() {

@@ -169,7 +169,7 @@ button {
   background-color:#914c10;
 }
 
-.hard-level {
+.body.hard .cell{
   font-size: 0.5em;
 }
 
@@ -371,11 +371,11 @@ button {
     font-size: 2em;
   }
 
-  .medium-level {
+  .body.medium .cell{
     font-size: 1.5em;
   }
 
-  .hard-level {
+  .body.hard .cell{
     font-size: 1em;
   }
 }
