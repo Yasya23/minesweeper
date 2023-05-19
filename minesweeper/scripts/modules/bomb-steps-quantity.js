@@ -5,7 +5,7 @@ const MAX_BOMBS = 99;
 
 let steps = 0;
 let bombQuantity = MIN_BOMBS;
-let countBomb = bombQuantity;
+let countBomb = null;
 
 function calculateRangeOnThePage(value) {
   const element = document.querySelector('.bomb-range');
@@ -30,6 +30,7 @@ function bombsOnTheField() {
 
 function updateBobmsOnTheFieldValue() {
   bombQuantity = bombsOnTheField();
+  countBomb = bombQuantity;
   document.getElementById('bomb-counter').textContent = bombQuantity;
 }
 
@@ -38,15 +39,18 @@ function returnBobmQuantity() {
 }
 
 function returnCauntBombValue() {
+  if (countBomb === null) countBomb = Number(bombQuantity);
   return countBomb;
 }
 
 function updateBobmQuantity(value) {
   bombQuantity = value;
+  countBomb = bombQuantity;
 }
 
 function changeBombQuantity(value) {
   bombQuantity = value;
+  countBomb = bombQuantity;
   document.getElementById('bomb-counter').textContent = bombQuantity;
 }
 

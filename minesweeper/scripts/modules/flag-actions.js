@@ -29,9 +29,14 @@ function removeFlag(id) {
   bombCounter('plus');
 }
 
+function removeAllFlags() {
+  document.querySelectorAll('.flaged').forEach((el) => removeFlag(el.id));
+}
+
 export {
   updateIsFlag,
   returnIsFlag,
   addFlag,
   removeFlag,
+  removeAllFlags,
 };

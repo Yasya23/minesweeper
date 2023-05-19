@@ -10,6 +10,7 @@ import {
   updateIsFlag,
   addFlag,
   removeFlag,
+  removeAllFlags,
 } from './modules/flag-actions.js';
 
 import {
@@ -69,6 +70,7 @@ function handleClickActions(e) {
 }
 
 function handleLevelChanged(value) {
+  removeAllFlags();
   changeLevel(value);
   createCells();
   resetStepsCounter();
@@ -84,6 +86,7 @@ function handleCnahgeActions(e) {
   const { id, value } = e.target;
   if (id === 'level') handleLevelChanged(value);
   if (id === 'bombs-quantity') {
+    removeAllFlags();
     changeBombQuantity(Number(value));
     calculateRangeOnThePage(Number(value));
   }
