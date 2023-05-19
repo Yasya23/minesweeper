@@ -30,6 +30,7 @@ import { changeLevel, blockedChooseLevel } from './modules/levels-actions.js';
 import { startTimer, resetTimer } from './modules/timer.js';
 import { actionsWithModalWindow } from './modules/modal-window.js';
 import newGame from './modules/new-game.js';
+import playSound from './modules/sounds.js';
 
 function actionsWithCells(id) {
   if (!returnIsFirstClick()) {
@@ -51,9 +52,18 @@ function handleCellClick(classList, idData) {
   blockedChooseLevel(true);
 }
 
+function addSound(classList) {
+  if (classList.contains('cell') && !classList.contains('clicked')) {
+    playSound('click');
+  } else if (!classList.contains('clicked')) {
+    playSound('generalClick');
+  }
+}
+
 function handleClickActions(e) {
   const { id: idData } = e.target.dataset;
   const { id, classList, parentElement } = e.target;
+  addSound(classList);
   if (idData === 'new-game') {
     newGame();
   } else if (parentElement.closest('.modal')) {
@@ -97,6 +107,7 @@ function handleInputActions(e) {
   e.preventDefault();
   const { id, value } = e.target;
   if (id === 'bombs-quantity') {
+    playSound('rangeChange');
     calculateRangeOnThePage(value);
     document.getElementById('rangevalue').textContent = value;
   }

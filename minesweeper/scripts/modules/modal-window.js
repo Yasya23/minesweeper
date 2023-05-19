@@ -3,6 +3,7 @@ import { pauseTimer, returnTime } from './timer.js';
 import { returnSteps } from './bomb-steps-quantity.js';
 import { updateIsFirstClick } from './first-click.js';
 import data from './data.js';
+import playSound from './sounds.js';
 
 function showWinMessage() {
   const { modalWinMessage } = data.modal;
@@ -20,8 +21,12 @@ function showModalWindow(value) {
   pauseTimer();
   if (value === 'bomb') {
     showLoseMessage();
+    playSound('lose');
   }
-  if (value === 'win') showWinMessage();
+  if (value === 'win') {
+    showWinMessage();
+    playSound('win');
+  }
   const modalWindow = document.querySelector('.modal-wrapper');
   modalWindow.style.display = 'block';
   document.body.classList.add('no-scroll');

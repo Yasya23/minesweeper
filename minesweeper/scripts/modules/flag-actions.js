@@ -1,4 +1,5 @@
 import { bombCounter, returnCauntBombValue } from './bomb-steps-quantity.js';
+import playSound from './sounds.js';
 
 let isFlag = false;
 
@@ -19,6 +20,7 @@ function addFlag(id) {
     element.classList.add('flaged');
     element.innerHTML = `<i data-id=${id} class="fa-solid fa-flag flag-icon"></i>`;
     bombCounter('minus');
+    playSound('flaged');
   }
 }
 
@@ -27,6 +29,7 @@ function removeFlag(id) {
   element.innerHTML = '';
   element.classList.remove('flaged');
   bombCounter('plus');
+  playSound('flaged');
 }
 
 function removeAllFlags() {

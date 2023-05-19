@@ -60,6 +60,14 @@ const data = {
     <img class="modal-img" src="img/corgiLose.png" alt="">
     `,
   },
+  sounds: {
+    click: 'sounds/click.wav',
+    lose: 'sounds/lose.wav',
+    win: 'sounds/win.wav',
+    flaged: 'sounds/flaged.wav',
+    rangeChange: 'sounds/range-change.wav',
+    generalClick: 'sounds/general-click.wav',
+  },
 };
 
 export default data;
