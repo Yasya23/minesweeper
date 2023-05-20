@@ -1,7 +1,6 @@
 import { returnIsFirstClick, returnElementId } from './first-click.js';
 import { returnLevel } from './levels-actions.js';
 import { returnBobmQuantity } from './bomb-steps-quantity.js';
-import data from './data.js';
 
 let finishArray = [];
 
@@ -54,7 +53,6 @@ function addCellsToHtml(array) {
     flagged.forEach((el) => {
       const element = document.getElementById(el);
       element.classList.add('flaged');
-      element.innerHTML = data.flagIcon;
     });
   }
 }

@@ -18,7 +18,7 @@ const data = {
     <input class="bomb-range" type="range" id="bombs-quantity" min="10" max="99" step="1" value="10">
     <output id="rangevalue">10</output>
    </div>`,
-    sound: '<div class="sound"><i class="fa-solid fa-volume-high"></i></div>',
+    sound: '<div class="sound" data-id="sound"><i data-id="sound" class="fa-solid fa-volume-high sound-icon"></i></div>',
     theme: `<div class="theme-wrapper">
     <input type="checkbox" class="theme-checkbox" id="theme-checkbox">
     <label for="theme-checkbox" class="theme-label">

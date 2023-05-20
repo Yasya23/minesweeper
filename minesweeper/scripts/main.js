@@ -30,7 +30,7 @@ import { changeLevel, blockedChooseLevel } from './modules/levels-actions.js';
 import { startTimer, resetTimer } from './modules/timer.js';
 import { actionsWithModalWindow } from './modules/modal-window.js';
 import newGame from './modules/new-game.js';
-import playSound from './modules/sounds.js';
+import { playSound, switchSoundValue } from './modules/sounds.js';
 
 function actionsWithCells(id) {
   if (!returnIsFirstClick()) {
@@ -53,16 +53,22 @@ function handleCellClick(classList, idData) {
 }
 
 function addSound(classList) {
-  if (classList.contains('cell') && !classList.contains('clicked')) {
+  if (!returnIsFlag() && classList.contains('cell') && !classList.contains('clicked')) {
     playSound('click');
   } else if (!classList.contains('clicked')) {
     playSound('generalClick');
   }
 }
 
+function switchSound() {
+  document.querySelector('.sound-icon').classList.toggle('fa-volume-xmark');
+  switchSoundValue();
+}
+
 function handleClickActions(e) {
   const { id: idData } = e.target.dataset;
   const { id, classList, parentElement } = e.target;
+
   addSound(classList);
   if (idData === 'new-game') {
     newGame();
@@ -70,13 +76,14 @@ function handleClickActions(e) {
     actionsWithModalWindow(id);
   } else if (idData === 'flag') {
     updateIsFlag();
-  } else if (classList.contains('cell') && !returnIsFlag() && !parentElement.closest('.flaged')) {
+  } else if (classList.contains('cell') && !returnIsFlag() && !classList.contains('flaged')) {
     handleCellClick(classList, idData);
-  } else if (!returnIsFlag() && (classList.contains('flaged') || parentElement.closest('.flaged'))) {
+  } else if (!returnIsFlag() && classList.contains('flaged')) {
+    console.log(classList);
     removeFlag(idData);
   } else if (returnIsFlag() && classList.contains('cell') && !classList.contains('clicked')) {
     addFlag(idData);
-  }
+  } else if (idData === 'sound') switchSound();
 }
 
 function handleLevelChanged(value) {

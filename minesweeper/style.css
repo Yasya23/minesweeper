@@ -29,6 +29,7 @@ button {
   margin-bottom: 15px;
   background-color: #ffc395;
   box-shadow: inset 0px -1px 4px -1px rgba(59, 19, 0, 0.67);
+  color: #4f1c00;
 }
 
 .body.dark .header {
@@ -49,6 +50,11 @@ button {
 .title {
   visibility: hidden;
   position: absolute;
+}
+
+.sound {
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .wrapper {
@@ -127,6 +133,14 @@ button {
 .flag-icon {
   color: #ff0606e8;
   transition: all ease-in-out 0.5s;
+}
+
+.flaged {
+  background-image: url(img/icons/flag-solid.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  background-color: inherit;
 }
 
 .body.dark .flag-icon{

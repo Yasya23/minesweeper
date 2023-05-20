@@ -14,8 +14,10 @@ const sounds = {
 };
 
 let currentSound = null;
+let isPlaying = true;
 
 function playSound(value) {
+  if (!isPlaying) return;
   if (currentSound) {
     currentSound.pause();
     currentSound.currentTime = 0;
@@ -28,4 +30,8 @@ function playSound(value) {
   }, 100);
 }
 
-export default playSound;
+function switchSoundValue() {
+  isPlaying = !isPlaying;
+}
+
+export { playSound, switchSoundValue };

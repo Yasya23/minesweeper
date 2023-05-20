@@ -14,7 +14,7 @@ function createHeader() {
 
 function createMainContent() {
   const {
-    minesQuantity, flag, newGameBtn, timer, steps, field 
+    minesQuantity, flag, newGameBtn, timer, steps, field,
   } = data.main;
   const menu = `<div class="menu">
     <div class="submenu">

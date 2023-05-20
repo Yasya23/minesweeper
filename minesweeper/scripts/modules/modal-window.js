@@ -3,7 +3,7 @@ import { pauseTimer, returnTime } from './timer.js';
 import { returnSteps } from './bomb-steps-quantity.js';
 import { updateIsFirstClick } from './first-click.js';
 import data from './data.js';
-import playSound from './sounds.js';
+import { playSound } from './sounds.js';
 
 function showWinMessage() {
   const { modalWinMessage } = data.modal;
