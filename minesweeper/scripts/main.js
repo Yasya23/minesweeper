@@ -23,6 +23,7 @@ import getGameState from './modules/show-saved-results.js';
 function actionsWithCells(id) {
   const bomb = Array.from(document.querySelectorAll('.bomb'));
   const clicked = Array.from(document.querySelectorAll('.clicked'));
+  if (bomb.length > 0) removeAllFlags();
   if ((!returnIsFirstClick() && clicked.length === 0) || (clicked.length > 0
     && (bomb.length > 0 || checkOpenedCells()))) {
     resetTimer();

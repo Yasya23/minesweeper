@@ -1,5 +1,5 @@
 import { returnLevel } from './levels-actions.js';
-import { saveStepsState } from './save-results.js';
+import { saveStepsState, saveBobmQuantityState } from './save-results.js';
 
 const MIN_BOMBS = 10;
 const MAX_BOMBS = 99;
@@ -32,6 +32,7 @@ function bombsOnTheField() {
 function updateBobmsOnTheFieldValue() {
   bombQuantity = bombsOnTheField();
   countBomb = bombQuantity;
+  saveBobmQuantityState(bombQuantity);
   document.getElementById('bomb-counter').textContent = bombQuantity;
 }
 
@@ -52,6 +53,7 @@ function updateBobmQuantity(value) {
 function changeBombQuantity(value) {
   bombQuantity = value;
   countBomb = bombQuantity;
+  saveBobmQuantityState(bombQuantity);
   document.getElementById('bomb-counter').textContent = bombQuantity;
 }
 

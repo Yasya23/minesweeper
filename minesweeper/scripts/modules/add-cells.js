@@ -61,7 +61,6 @@ function addCellsToHtml(array) {
 function createCells() {
   const bombQuantity = returnBobmQuantity();
   const level = returnLevel();
-  console.log(level);
   const quantity = level ** 2;
   const cellQuantity = quantity - bombQuantity;
   if (returnIsFirstClick()) {
