@@ -44,7 +44,7 @@ function actionsWithModalWindow(id) {
     updateIsFirstClick(false, null);
     pauseTimer();
   }
-  if (id === 'modal-agree-btn') {
+  if (id === 'modal-agree-btn' || id === 'wrapper') {
     closeModalWindow();
     newGame();
   }

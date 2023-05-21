@@ -72,6 +72,8 @@ function handleClickActions(e) {
     saveGameState('cell');
   } else if (parentElement.closest('.modal')) {
     actionsWithModalWindow(id);
+  } else if (classList.contains('modal-wrapper')) {
+    actionsWithModalWindow('wrapper');
   } else if (idData === 'flag') {
     updateIsFlag();
   } else if (classList.contains('cell') && !returnIsFlag() && !classList.contains('flaged')) {
