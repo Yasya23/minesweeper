@@ -13,16 +13,12 @@ function formatTime(h, min, sec) {
   const result = `${hourValue}${minutesValue}:${secondsValue}`;
   const timer = document.querySelector('.timer');
   timer.textContent = result;
-  // console.log(result, secondsValue);
-  // return result;
 }
 
 function startTimer() {
   if (!isTimer) {
     isTimer = true;
-    // const timer = document.querySelector('.timer');
     timeInterval = setInterval(() => {
-      // timer.textContent = formatTime(hour, minutes, seconds);
       formatTime(hour, minutes, seconds);
       seconds += 1;
       if (seconds === 60) {
@@ -48,7 +44,6 @@ function pauseTimer() {
 }
 
 function updateTimer(h, min, sec) {
-  console.log(h, min, sec);
   hour = h;
   minutes = min;
   seconds = sec;
@@ -56,13 +51,12 @@ function updateTimer(h, min, sec) {
 }
 
 function resetTimer() {
-  const timer = document.querySelector('.timer');
   hour = 0;
   minutes = 0;
   seconds = 0;
-  timer.textContent = '00:00';
+  formatTime(hour, minutes, seconds);
   isTimer = false;
-  saveTimerState('00:00');
+  saveTimerState([hour, minutes, seconds]);
 }
 
 export {
