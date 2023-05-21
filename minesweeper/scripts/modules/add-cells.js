@@ -98,4 +98,14 @@ function returnFinishArray() {
   return finishArray;
 }
 
-export { createCells, returnFinishArray, getNeighbors };
+function updateFinishArray(array) {
+  // const gameStateData = localStorage.getItem('gameState');
+  // const data = JSON.parse(gameStateData);
+  // const { finishArray: array } = data;
+  finishArray = array;
+  addCellsToHtml(finishArray);
+}
+
+export {
+  createCells, returnFinishArray, getNeighbors, updateFinishArray,
+};

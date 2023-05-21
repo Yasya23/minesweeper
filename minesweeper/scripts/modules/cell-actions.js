@@ -7,14 +7,14 @@ function checkOpenedCells() {
   const cells = Array.from(document.querySelectorAll('.cell'));
   const cellsWithoutBombs = cells.length - returnBobmQuantity();
   const array = cells.filter((cell) => !cell.classList.contains('bomb') && cell.classList.contains('clicked'));
-  if (array.length === cellsWithoutBombs) showModalWindow('win');
+  return (array.length === cellsWithoutBombs);
 }
 
 function showNumberCell(id, textContent, value) {
   const element = document.getElementById(id);
   element.textContent = textContent;
   element.classList.add(value, 'clicked');
-  checkOpenedCells();
+  if (checkOpenedCells()) showModalWindow('win');
 }
 
 function showAllCells(array) {
@@ -62,4 +62,4 @@ function handleCellAction(id) {
   }
 }
 
-export default handleCellAction;
+export { handleCellAction, checkOpenedCells };

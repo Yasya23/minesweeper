@@ -4,7 +4,7 @@ import {
   updateIsFirstClick,
   returnIsFirstClick,
 } from './modules/first-click.js';
-import handleCellAction from './modules/cell-actions.js';
+import { handleCellAction, checkOpenedCells } from './modules/cell-actions.js';
 import {
   returnIsFlag,
   updateIsFlag,
@@ -32,9 +32,13 @@ import { actionsWithModalWindow } from './modules/modal-window.js';
 import newGame from './modules/new-game.js';
 import { playSound, switchSoundValue } from './modules/sounds.js';
 import { saveGameState } from './modules/save-results.js';
+import getGameState from './modules/show-saved-results.js';
 
 function actionsWithCells(id) {
-  if (!returnIsFirstClick()) {
+  const bomb = Array.from(document.querySelectorAll('.bomb'));
+  const clicked = Array.from(document.querySelectorAll('.clicked'));
+  if ((!returnIsFirstClick() && clicked.length === 0) || (clicked.length > 0
+    && (bomb.length > 0 || checkOpenedCells()))) {
     resetTimer();
     if (returnSteps() > 0) {
       updateSteps(1);
@@ -133,5 +137,7 @@ function init() {
 document.addEventListener('click', handleClickActions);
 document.addEventListener('change', handleCnahgeActions);
 document.addEventListener('input', handleInputActions);
+
+window.addEventListener('load', getGameState);
 
 init();
