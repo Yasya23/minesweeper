@@ -31,6 +31,7 @@ import { startTimer, resetTimer } from './modules/timer.js';
 import { actionsWithModalWindow } from './modules/modal-window.js';
 import newGame from './modules/new-game.js';
 import { playSound, switchSoundValue } from './modules/sounds.js';
+import { saveGameState } from './modules/save-results.js';
 
 function actionsWithCells(id) {
   if (!returnIsFirstClick()) {
@@ -68,21 +69,24 @@ function switchSound() {
 function handleClickActions(e) {
   const { id: idData } = e.target.dataset;
   const { id, classList, parentElement } = e.target;
-
   addSound(classList);
   if (idData === 'new-game') {
     newGame();
+    saveGameState('cell');
   } else if (parentElement.closest('.modal')) {
     actionsWithModalWindow(id);
   } else if (idData === 'flag') {
     updateIsFlag();
   } else if (classList.contains('cell') && !returnIsFlag() && !classList.contains('flaged')) {
     handleCellClick(classList, idData);
+    saveGameState('cell');
   } else if (!returnIsFlag() && classList.contains('flaged')) {
-    console.log(classList);
     removeFlag(idData);
-  } else if (returnIsFlag() && classList.contains('cell') && !classList.contains('clicked')) {
+    saveGameState('cell');
+  } else if (returnIsFlag() && classList.contains('cell') && !classList.contains('clicked')
+  && !classList.contains('flaged')) {
     addFlag(idData);
+    saveGameState('cell');
   } else if (idData === 'sound') switchSound();
 }
 

@@ -1,6 +1,7 @@
 import { returnIsFirstClick, returnElementId } from './first-click.js';
 import { returnLevel } from './levels-actions.js';
 import { returnBobmQuantity } from './bomb-steps-quantity.js';
+import { saveArrayState } from './save-results.js';
 
 let finishArray = [];
 
@@ -86,6 +87,7 @@ function createCells() {
       });
       if (count > 0) finishArray[index] = `number${count}`;
     });
+    saveArrayState(finishArray);
   } else {
     finishArray = new Array(level * level).fill('');
   }
