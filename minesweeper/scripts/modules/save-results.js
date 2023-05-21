@@ -1,12 +1,6 @@
 // import { returnLevel } from './levels-actions.js';
 import { returnTime } from './timer.js';
 
-const gameState = {
-  cells: null,
-  timer: returnTime(),
-  finishArray: null,
-};
-
 function getCells(value) {
   const cells = Array.from(document.querySelectorAll(`.${value}`));
   const result = cells.map((cell) => ({ id: cell.id, classList: Array.from(cell.classList) }));
@@ -14,15 +8,23 @@ function getCells(value) {
 }
 
 function saveGameState(value) {
+  const cellStates = {};
   if (value === 'cell') {
-    gameState.cells = getCells(value);
+    cellStates.cells = getCells(value);
   }
-  localStorage.setItem('gameState', JSON.stringify(gameState));
+  localStorage.setItem('gameState', JSON.stringify(cellStates));
 }
 
 function saveArrayState(array) {
-  gameState.finishArray = array;
-  localStorage.setItem('gameState', JSON.stringify(gameState));
+  const arrayState = {};
+  arrayState.finishArray = array;
+  localStorage.setItem('arrayState', JSON.stringify(arrayState));
 }
 
-export { saveGameState, saveArrayState };
+function saveThemeState(value) {
+  const theme = {};
+  theme.darkTheme = value;
+  localStorage.setItem('theme', JSON.stringify(theme));
+}
+
+export { saveGameState, saveArrayState, saveThemeState };

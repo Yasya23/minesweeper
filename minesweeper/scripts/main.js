@@ -31,7 +31,7 @@ import { startTimer, resetTimer } from './modules/timer.js';
 import { actionsWithModalWindow } from './modules/modal-window.js';
 import newGame from './modules/new-game.js';
 import { playSound, switchSoundValue } from './modules/sounds.js';
-import { saveGameState } from './modules/save-results.js';
+import { saveGameState, saveThemeState } from './modules/save-results.js';
 import getGameState from './modules/show-saved-results.js';
 
 function actionsWithCells(id) {
@@ -105,6 +105,11 @@ function handleLevelChanged(value) {
 
 function changeTheme() {
   document.body.classList.toggle('dark');
+  if (document.body.classList.contains('dark')) {
+    saveThemeState(true);
+  } else {
+    saveThemeState(false);
+  }
 }
 
 function handleCnahgeActions(e) {
