@@ -61,6 +61,7 @@ function addCellsToHtml(array) {
 function createCells() {
   const bombQuantity = returnBobmQuantity();
   const level = returnLevel();
+  console.log(level);
   const quantity = level ** 2;
   const cellQuantity = quantity - bombQuantity;
   if (returnIsFirstClick()) {
@@ -87,10 +88,10 @@ function createCells() {
       });
       if (count > 0) finishArray[index] = `number${count}`;
     });
-    saveArrayState(finishArray);
   } else {
     finishArray = new Array(level * level).fill('');
   }
+  saveArrayState(finishArray);
   addCellsToHtml(finishArray);
 }
 
@@ -99,9 +100,6 @@ function returnFinishArray() {
 }
 
 function updateFinishArray(array) {
-  // const gameStateData = localStorage.getItem('gameState');
-  // const data = JSON.parse(gameStateData);
-  // const { finishArray: array } = data;
   finishArray = array;
   addCellsToHtml(finishArray);
 }

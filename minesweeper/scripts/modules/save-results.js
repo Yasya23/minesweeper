@@ -1,6 +1,3 @@
-// import { returnLevel } from './levels-actions.js';
-import { returnTime } from './timer.js';
-
 function getCells(value) {
   const cells = Array.from(document.querySelectorAll(`.${value}`));
   const result = cells.map((cell) => ({ id: cell.id, classList: Array.from(cell.classList) }));
@@ -27,4 +24,24 @@ function saveThemeState(value) {
   localStorage.setItem('theme', JSON.stringify(theme));
 }
 
-export { saveGameState, saveArrayState, saveThemeState };
+function saveSoundState(value) {
+  const sound = {};
+  sound.value = value;
+  localStorage.setItem('soundState', JSON.stringify(sound));
+}
+
+function saveStepsState(value) {
+  const steps = {};
+  steps.value = value;
+  localStorage.setItem('stepsState', JSON.stringify(steps));
+}
+
+function saveLevelState(value) {
+  const level = {};
+  level.value = value;
+  localStorage.setItem('levelState', JSON.stringify(level));
+}
+
+export {
+  saveGameState, saveArrayState, saveThemeState, saveSoundState, saveStepsState, saveLevelState,
+};

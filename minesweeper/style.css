@@ -152,7 +152,7 @@ button {
 }
 
 .flag-active {
-  background-color: #fdf96c;
+  background-color: #ff6565;
 }
 
 .filled {
@@ -435,7 +435,7 @@ button {
 }
 
 .bomb {
-  background-color: #ff727e;
+  background-color: #ff727ebf;
 }
 
 .number1 {

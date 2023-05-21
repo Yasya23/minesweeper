@@ -1,28 +1,14 @@
 import { createCells } from './modules/add-cells.js';
 import createPageStructure from './modules/page-structure.js';
-import {
-  updateIsFirstClick,
-  returnIsFirstClick,
-} from './modules/first-click.js';
+import { updateIsFirstClick, returnIsFirstClick } from './modules/first-click.js';
 import { handleCellAction, checkOpenedCells } from './modules/cell-actions.js';
 import {
-  returnIsFlag,
-  updateIsFlag,
-  addFlag,
-  removeFlag,
-  removeAllFlags,
+  returnIsFlag, updateIsFlag, addFlag, removeFlag, removeAllFlags,
 } from './modules/flag-actions.js';
 
 import {
-  stepsCounter,
-  changeBombQuantity,
-  blockChooseBombs,
-  resetStepsCounter,
-  updateBobmsOnTheFieldValue,
-  returnBobmQuantity,
-  calculateRangeOnThePage,
-  returnSteps,
-  updateSteps,
+  stepsCounter, changeBombQuantity, blockChooseBombs, resetStepsCounter, updateBobmsOnTheFieldValue,
+  returnBobmQuantity, calculateRangeOnThePage, returnSteps, updateSteps,
 } from './modules/bomb-steps-quantity.js';
 
 import { changeLevel, blockedChooseLevel } from './modules/levels-actions.js';
@@ -31,7 +17,7 @@ import { startTimer, resetTimer } from './modules/timer.js';
 import { actionsWithModalWindow } from './modules/modal-window.js';
 import newGame from './modules/new-game.js';
 import { playSound, switchSoundValue } from './modules/sounds.js';
-import { saveGameState, saveThemeState } from './modules/save-results.js';
+import { saveGameState, saveThemeState, saveSoundState } from './modules/save-results.js';
 import getGameState from './modules/show-saved-results.js';
 
 function actionsWithCells(id) {
@@ -66,7 +52,13 @@ function addSound(classList) {
 }
 
 function switchSound() {
-  document.querySelector('.sound-icon').classList.toggle('fa-volume-xmark');
+  const icon = document.querySelector('.sound-icon');
+  icon.classList.toggle('fa-volume-xmark');
+  if (icon.classList.contains('fa-volume-xmark')) {
+    saveSoundState(false);
+  } else {
+    saveSoundState(true);
+  }
   switchSoundValue();
 }
 
@@ -100,6 +92,7 @@ function handleLevelChanged(value) {
   createCells();
   resetStepsCounter();
   updateBobmsOnTheFieldValue();
+  saveGameState('cell');
   document.getElementById('rangevalue').textContent = returnBobmQuantity();
 }
 
@@ -133,16 +126,16 @@ function handleInputActions(e) {
   }
 }
 
-function init() {
+document.addEventListener('DOMContentLoaded', () => {
+  const arrayStateData = localStorage.getItem('arrayState');
+  const arrayState = arrayStateData ? JSON.parse(arrayStateData) : {};
   createPageStructure();
-  calculateRangeOnThePage(20);
-  createCells();
-}
+  calculateRangeOnThePage(10);
+  if (!arrayState.finishArray) createCells();
+});
+
+window.addEventListener('load', getGameState);
 
 document.addEventListener('click', handleClickActions);
 document.addEventListener('change', handleCnahgeActions);
 document.addEventListener('input', handleInputActions);
-
-window.addEventListener('load', getGameState);
-
-init();

@@ -1,4 +1,5 @@
 import { returnLevel } from './levels-actions.js';
+import { saveStepsState } from './save-results.js';
 
 const MIN_BOMBS = 10;
 const MAX_BOMBS = 99;
@@ -71,6 +72,7 @@ function blockChooseBombs(value) {
 
 function stepsCounter() {
   steps += 1;
+  saveStepsState(steps);
   document.getElementById('steps').textContent = steps;
 }
 
@@ -80,6 +82,7 @@ function returnSteps() {
 
 function resetStepsCounter() {
   steps = 0;
+  saveStepsState(steps);
   document.getElementById('steps').textContent = steps;
 }
 

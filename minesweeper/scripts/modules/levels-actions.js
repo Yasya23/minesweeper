@@ -1,3 +1,5 @@
+import { saveLevelState } from './save-results.js';
+
 const levels = {
   easy: 10,
   medium: 15,
@@ -23,15 +25,14 @@ function changeValues(value) {
 }
 
 function changeLevel(value) {
+  saveLevelState(value);
   if (value === 'easy') {
     changeValues(levels.easy);
     removeLevelClass();
-  }
-  if (value === 'medium') {
+  } else if (value === 'medium') {
     changeValues(levels.medium);
     addLevelClassToBody(value);
-  }
-  if (value === 'hard') {
+  } else if (value === 'hard') {
     changeValues(levels.hard);
     addLevelClassToBody(value);
   }
