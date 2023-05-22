@@ -20,9 +20,10 @@ import { playSound, switchSoundValue } from './modules/sounds.js';
 import {
   saveGameState, saveThemeState, saveSoundState, saveFlagState,
 } from './modules/save-results.js';
-import { getGameState, getGameHistory } from './modules/show-saved-results.js';
+import { getGameState, getGameHistoryState } from './modules/show-saved-results.js';
 
 function actionsWithCells(id) {
+  getGameHistoryState();
   const bomb = Array.from(document.querySelectorAll('.bomb'));
   const clicked = Array.from(document.querySelectorAll('.clicked'));
   if (bomb.length > 0) removeAllFlags();
@@ -137,10 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const arrayState = arrayStateData ? JSON.parse(arrayStateData) : {};
   createPageStructure();
   calculateRangeOnThePage(10);
+  createCells();
   if (!arrayState.finishArray) createCells();
 });
-
-console.log(1);
 
 window.addEventListener('load', getGameState);
 
