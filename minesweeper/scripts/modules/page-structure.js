@@ -41,6 +41,7 @@ function createModalsWindow() {
 }
 
 function createPageStructure() {
+  console.log(1);
   const body = document.querySelector('body');
   const header = createHeader();
   const main = createMainContent();

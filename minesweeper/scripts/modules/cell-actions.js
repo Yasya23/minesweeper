@@ -2,6 +2,7 @@ import { returnFinishArray, getNeighbors } from './add-cells.js';
 import { returnBobmQuantity } from './bomb-steps-quantity.js';
 import { showModalWindow } from './modal-window.js';
 import data from './data.js';
+import addGameResult from './game-history.js';
 
 function checkOpenedCells() {
   const cells = Array.from(document.querySelectorAll('.cell'));
@@ -15,6 +16,7 @@ function showNumberCell(id, textContent, value) {
   element.textContent = textContent;
   element.classList.add(value, 'clicked');
   if (checkOpenedCells()) showModalWindow('win');
+  addGameResult();
 }
 
 function showAllCells(array) {

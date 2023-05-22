@@ -60,7 +60,11 @@ function saveFlagState(value) {
   localStorage.setItem('flagState', JSON.stringify(flag));
 }
 
+function saveGameHistory(gameHistory) {
+  localStorage.setItem('gameHistory', JSON.stringify(gameHistory));
+}
+
 export {
   saveGameState, saveArrayState, saveThemeState, saveSoundState, saveStepsState, saveLevelState,
-  saveBobmQuantityState, saveTimerState, saveFlagState,
+  saveBobmQuantityState, saveTimerState, saveFlagState, saveGameHistory,
 };

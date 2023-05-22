@@ -34,4 +34,9 @@ function getData() {
   return dataValues;
 }
 
-export default getData;
+function getGameHistory() {
+  const gameHistoryJSON = localStorage.getItem('gameHistory');
+  return gameHistoryJSON ? JSON.parse(gameHistoryJSON) : [];
+}
+
+export { getData, getGameHistory };

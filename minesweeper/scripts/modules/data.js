@@ -68,6 +68,20 @@ const data = {
     rangeChange: 'sounds/range-change.wav',
     generalClick: 'sounds/general-click.wav',
   },
+  history: {
+    table: `<table>
+    <thead>
+      <tr>
+       <th>Level</th>
+       <th>Bombs</th>
+       <th>Time</th>
+       <th>Steps</th>
+     </tr>
+     </thead>
+   <tbody>
+   </tbody>
+ </table>`,
+  },
 };
 
 export default data;

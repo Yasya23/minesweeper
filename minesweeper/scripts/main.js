@@ -20,7 +20,7 @@ import { playSound, switchSoundValue } from './modules/sounds.js';
 import {
   saveGameState, saveThemeState, saveSoundState, saveFlagState,
 } from './modules/save-results.js';
-import getGameState from './modules/show-saved-results.js';
+import { getGameState, getGameHistory } from './modules/show-saved-results.js';
 
 function actionsWithCells(id) {
   const bomb = Array.from(document.querySelectorAll('.bomb'));
@@ -139,6 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
   calculateRangeOnThePage(10);
   if (!arrayState.finishArray) createCells();
 });
+
+console.log(1);
 
 window.addEventListener('load', getGameState);
 
