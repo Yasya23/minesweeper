@@ -76,6 +76,8 @@ function handleClickActions(e) {
   } else if (id === 'history-button') {
     showModalWindow(id);
     getGameHistoryState();
+  } else if (id === 'game-rule-button') {
+    showModalWindow(id);
   } else if (parentElement.closest('.modal')) {
     actionsWithModalWindow(id);
   } else if (classList.contains('modal-wrapper')) {

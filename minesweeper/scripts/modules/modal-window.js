@@ -23,6 +23,11 @@ function showGameHistoryTable() {
   document.getElementById('modal-message').innerHTML = table;
 }
 
+function showRules() {
+  const { instructions } = data;
+  document.getElementById('modal-message').innerHTML = instructions;
+}
+
 function showModalWindow(value) {
   pauseTimer();
   if (value === 'bomb') {
@@ -35,6 +40,9 @@ function showModalWindow(value) {
   }
   if (value === 'history-button') {
     showGameHistoryTable();
+  }
+  if (value === 'game-rule-button') {
+    showRules();
   }
   const modalWindow = document.querySelector('.modal-wrapper');
   modalWindow.style.display = 'block';

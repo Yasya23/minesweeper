@@ -10,7 +10,7 @@ button {
 }
 
 .history-button,
-.game-rules-button {
+.game-rule-button {
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -248,6 +248,16 @@ button {
   max-width: 80%;
   height: auto;
   padding: 15px;
+}
+
+.instrunction {
+  text-align: left;
+  padding: 15px;
+  line-height: 1.2;
+}
+
+.instrunction li {
+  margin-bottom: 10px;
 }
 
 @keyframes animatetop {
