@@ -15,8 +15,10 @@ function showNumberCell(id, textContent, value) {
   const element = document.getElementById(id);
   element.textContent = textContent;
   element.classList.add(value, 'clicked');
-  if (checkOpenedCells()) showModalWindow('win');
-  addGameResult();
+  if (checkOpenedCells()) {
+    showModalWindow('win');
+    addGameResult();
+  }
 }
 
 function showAllCells(array) {

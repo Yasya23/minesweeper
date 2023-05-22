@@ -1,8 +1,8 @@
-import { returnBobmQuantity, returnSteps } from './bomb-steps-quantity';
+import { returnBobmQuantity, returnSteps } from './bomb-steps-quantity.js';
 import { returnLevel } from './levels-actions.js';
-import { getGameHistory } from './local-storage-data';
+import { getGameHistory } from './local-storage-data.js';
 import { saveGameHistory } from './save-results.js';
-import { returnTime } from './timer';
+import { returnTime } from './timer.js';
 
 function getResults() {
   const gameResult = {
