@@ -82,7 +82,7 @@ const data = {
    </tbody>
  </table>`,
   },
-  instructions: ` <ol class="instrunction">
+  instructions: ` <ol class="instruction">
     <li>The goal of Minesweeper is to uncover all the cells on the grid that do not contain mines, without detonating any of the mines.</li>
     <li>At the beginning of the game, you'll see a grid of cells. Each cell is either empty or contains a mine.
     </li>
@@ -95,10 +95,8 @@ const data = {
     <li>If you uncover all the safe cells without detonating any mines, you win the game!
     </li>
   </ol>
-  <p>Remember, the key strategies in Minesweeper are to analyze the numbers carefully, flag potential mine locations when in flagging mode, and make calculated moves to minimize risks.</p>
-  <br>
-  <p><b>Enjoy the game and good luck!</b></p>
-  <br>
+  <p class="instruction-text">Remember, the key strategies in Minesweeper are to analyze the numbers carefully, flag potential mine locations when in flagging mode, and make calculated moves to minimize risks.</p>
+  <p class="instruction-text"><b>Enjoy the game and good luck!</b></p>
   `,
 };
 

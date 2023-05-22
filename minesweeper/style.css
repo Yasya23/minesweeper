@@ -216,7 +216,7 @@ button {
   left:0;
   background-color: rgba(0, 0, 0, 0.138);
   width: 100vw;
-  height: 100%;
+  height: 100vh;
 }
 
 .modal {
@@ -228,7 +228,7 @@ button {
   min-height: 200px;
   height: auto;
   max-width: 90vw;
-  max-height: 90vh;
+  max-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -250,14 +250,20 @@ button {
   padding: 15px;
 }
 
-.instrunction {
+.instruction {
   text-align: left;
-  padding: 15px;
-  line-height: 1.2;
+  padding: 12px;
+  line-height: 1;
+  font-size: 12px;
 }
 
-.instrunction li {
-  margin-bottom: 10px;
+.instruction-text {
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.instruction li {
+  margin-bottom: 5px;
 }
 
 @keyframes animatetop {
@@ -443,6 +449,22 @@ button {
 
   .body.hard .cell{
     font-size: 0.8em;
+  }
+
+  .instruction {
+    text-align: left;
+    padding: 15px;
+    line-height: 1.2;
+    font-size: 15px;
+  }
+  
+  .instruction li {
+    margin-bottom: 10px;
+  }
+
+  .instruction-text {
+    margin-bottom: 10px;
+    font-size: 16px;
   }
 }
 
