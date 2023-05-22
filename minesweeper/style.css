@@ -20,6 +20,21 @@ button {
   overflow: hidden;
 }
 
+.table {
+  margin: 5px;
+  border: 1px solid #ff8766;
+}
+
+.table-header{
+  color: #9c0000;
+}
+
+.table-header,
+.table-value {
+  border: 1px solid #ff8766;
+  padding: 10px;
+}
+
 .body {
   position: relative;
   font-family: Arial, Helvetica, sans-serif;

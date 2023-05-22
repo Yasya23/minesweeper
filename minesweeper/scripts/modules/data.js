@@ -69,13 +69,13 @@ const data = {
     generalClick: 'sounds/general-click.wav',
   },
   history: {
-    table: `<table>
+    table: `<table class="table">
     <thead>
       <tr>
-       <th>Level</th>
-       <th>Bombs</th>
-       <th>Time</th>
-       <th>Steps</th>
+       <th class="table-header">Field</th>
+       <th class="table-header">Bombs</th>
+       <th class="table-header">Time</th>
+       <th class="table-header">Steps</th>
      </tr>
      </thead>
    <tbody class="table-body">

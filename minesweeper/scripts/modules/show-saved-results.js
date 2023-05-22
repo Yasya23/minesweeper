@@ -92,10 +92,10 @@ function getGameHistoryState() {
       level, bombs, time, steps,
     } = el;
     return `<tr>
-    <td>${level} * ${level}</td>
-    <td>${bombs}</td>
-    <td>${time}</td>
-    <td>${steps}</td>
+    <td class="table-value">${level} * ${level}</td>
+    <td class="table-value">${bombs}</td>
+    <td class="table-value">${time}</td>
+    <td class="table-value">${steps}</td>
   </tr>`;
   }).join('');
   tableBody.innerHTML = result;
