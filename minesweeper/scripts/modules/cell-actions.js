@@ -1,15 +1,8 @@
 import { returnFinishArray, getNeighbors } from './add-cells.js';
-import { returnBobmQuantity } from './bomb-steps-quantity.js';
 import { showModalWindow } from './modal-window.js';
 import data from './data.js';
 import addGameResult from './game-history.js';
-
-function checkOpenedCells() {
-  const cells = Array.from(document.querySelectorAll('.cell'));
-  const cellsWithoutBombs = cells.length - returnBobmQuantity();
-  const array = cells.filter((cell) => !cell.classList.contains('bomb') && cell.classList.contains('clicked'));
-  return (array.length === cellsWithoutBombs);
-}
+import checkOpenedCells from './check-opened-cells.js';
 
 function showNumberCell(id, textContent, value) {
   const element = document.getElementById(id);
@@ -66,4 +59,4 @@ function handleCellAction(id) {
   }
 }
 
-export { handleCellAction, checkOpenedCells };
+export default handleCellAction;

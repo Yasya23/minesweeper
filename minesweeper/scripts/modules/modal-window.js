@@ -1,9 +1,10 @@
 import newGame from './new-game.js';
-import { pauseTimer, returnTime } from './timer.js';
+import { pauseTimer, returnTime, startTimer } from './timer.js';
 import { returnSteps } from './bomb-steps-quantity.js';
 import { updateIsFirstClick } from './first-click.js';
 import data from './data.js';
 import { playSound } from './sounds.js';
+import checkOpenedCells from './check-opened-cells.js';
 
 function showWinMessage() {
   const { modalWinMessage } = data.modal;
@@ -47,12 +48,15 @@ function closeModalWindow() {
 }
 
 function actionsWithModalWindow(id) {
-  if (id === 'close-modal') {
+  if (id === 'close-modal' || id === 'wrapper') {
     closeModalWindow();
-    updateIsFirstClick(false, null);
-    pauseTimer();
+    startTimer();
+    if (document.querySelector('.bomb') || checkOpenedCells() || !document.querySelector('.clicked')) {
+      updateIsFirstClick(false, null);
+      pauseTimer();
+    }
   }
-  if (id === 'modal-agree-btn' || id === 'wrapper') {
+  if (id === 'modal-agree-btn') {
     closeModalWindow();
     newGame();
   }

@@ -7,7 +7,7 @@ import {
 import data from './data.js';
 import { changeLevel, blockedChooseLevel } from './levels-actions.js';
 import { updateTimer, startTimer } from './timer.js';
-import { checkOpenedCells } from './cell-actions.js';
+import checkOpenedCells from './check-opened-cells.js';
 import { getData, getGameHistory } from './local-storage-data.js';
 import { updateIsFlag } from './flag-actions.js';
 

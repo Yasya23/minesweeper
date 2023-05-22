@@ -51,11 +51,11 @@ function updateTimer(h, min, sec) {
 }
 
 function resetTimer() {
+  if (isTimer) pauseTimer();
   hour = 0;
   minutes = 0;
   seconds = 0;
   formatTime();
-  isTimer = false;
   saveTimerState([hour, minutes, seconds]);
 }
 

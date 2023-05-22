@@ -1,7 +1,8 @@
 import { createCells } from './modules/add-cells.js';
 import createPageStructure from './modules/page-structure.js';
 import { updateIsFirstClick, returnIsFirstClick } from './modules/first-click.js';
-import { handleCellAction, checkOpenedCells } from './modules/cell-actions.js';
+import handleCellAction from './modules/cell-actions.js';
+import checkOpenedCells from './modules/check-opened-cells.js';
 import {
   returnIsFlag, updateIsFlag, addFlag, removeFlag, removeAllFlags,
 } from './modules/flag-actions.js';
