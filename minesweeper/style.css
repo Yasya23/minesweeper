@@ -12,8 +12,14 @@ button {
 .history-button,
 .game-rule-button {
   font-size: 1rem;
+  color: #4f1c00;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+}
+
+.body.dark .history-button,
+.body.dark .game-rule-button{
+  color:#b85600;;
 }
 
 .no-scroll {
