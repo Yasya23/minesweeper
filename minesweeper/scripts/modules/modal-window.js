@@ -17,6 +17,11 @@ function showLoseMessage() {
   document.getElementById('modal-message').innerHTML = modalLoseMessage;
 }
 
+function showGameHistoryTable() {
+  const { table } = data.history;
+  document.getElementById('modal-message').innerHTML = table;
+}
+
 function showModalWindow(value) {
   pauseTimer();
   if (value === 'bomb') {
@@ -26,6 +31,9 @@ function showModalWindow(value) {
   if (value === 'win') {
     showWinMessage();
     playSound('win');
+  }
+  if (value === 'history-button') {
+    showGameHistoryTable();
   }
   const modalWindow = document.querySelector('.modal-wrapper');
   modalWindow.style.display = 'block';

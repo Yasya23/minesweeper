@@ -14,16 +14,15 @@ import {
 import { changeLevel, blockedChooseLevel } from './modules/levels-actions.js';
 
 import { startTimer, resetTimer } from './modules/timer.js';
-import { actionsWithModalWindow } from './modules/modal-window.js';
+import { actionsWithModalWindow, showModalWindow } from './modules/modal-window.js';
 import newGame from './modules/new-game.js';
 import { playSound, switchSoundValue } from './modules/sounds.js';
 import {
   saveGameState, saveThemeState, saveSoundState, saveFlagState,
 } from './modules/save-results.js';
-import { getGameState, getGameHistoryState } from './modules/show-saved-results.js';
+import { getGameHistoryState, getGameState } from './modules/show-saved-results.js';
 
 function actionsWithCells(id) {
-  getGameHistoryState();
   const bomb = Array.from(document.querySelectorAll('.bomb'));
   const clicked = Array.from(document.querySelectorAll('.clicked'));
   if (bomb.length > 0) removeAllFlags();
@@ -73,6 +72,9 @@ function handleClickActions(e) {
   if (idData === 'new-game') {
     newGame();
     saveGameState('cell');
+  } else if (id === 'history-button') {
+    showModalWindow(id);
+    getGameHistoryState();
   } else if (parentElement.closest('.modal')) {
     actionsWithModalWindow(id);
   } else if (classList.contains('modal-wrapper')) {
@@ -138,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const arrayState = arrayStateData ? JSON.parse(arrayStateData) : {};
   createPageStructure();
   calculateRangeOnThePage(10);
-  createCells();
   if (!arrayState.finishArray) createCells();
 });
 

@@ -3,8 +3,8 @@ const data = {
   flagIcon: '<i data-id="flag" class="fa-solid fa-flag flag-icon"></i>',
   bombIcon: '<i class="fa-solid fa-poo"></i>',
   header: {
-    gameRules: '<button>How to play</button>',
-    history: '<button>History</button>',
+    gameRules: '<button class="game-rule-button" id="game-rule-button">How to play</button>',
+    history: '<button class="history-button" id="history-button">History</button>',
     levels: `<div class="levels-wrapper">
    <label for="level">Level:</label>
       <select id="level" class="level-select">
@@ -78,7 +78,7 @@ const data = {
        <th>Steps</th>
      </tr>
      </thead>
-   <tbody>
+   <tbody class="table-body">
    </tbody>
  </table>`,
   },

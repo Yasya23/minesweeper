@@ -85,7 +85,20 @@ function getGameState() {
 }
 
 function getGameHistoryState() {
-  // const dataValues = getGameHistory();
+  const dataValues = getGameHistory();
+  const tableBody = document.querySelector('.table-body');
+  const result = dataValues.map((el) => {
+    const {
+      level, bombs, time, steps,
+    } = el;
+    return `<tr>
+    <td>${level} * ${level}</td>
+    <td>${bombs}</td>
+    <td>${time}</td>
+    <td>${steps}</td>
+  </tr>`;
+  }).join('');
+  tableBody.innerHTML = result;
 }
 
 export { getGameState, getGameHistoryState };

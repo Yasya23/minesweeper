@@ -9,6 +9,13 @@ button {
   border: none;
 }
 
+.history-button,
+.game-rules-button {
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
 .no-scroll {
   overflow: hidden;
 }
@@ -369,6 +376,11 @@ button {
   }
 
   .flag-button:hover .flag-icon {
+    color: #9c0000;
+  }
+
+  .history-button:hover,
+  .game-rules-button:hover {
     color: #9c0000;
   }
 }

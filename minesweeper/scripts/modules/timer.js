@@ -35,7 +35,7 @@ function startTimer() {
 }
 
 function returnTime() {
-  return formatTime();
+  return document.querySelector('.timer').textContent;
 }
 
 function pauseTimer() {
