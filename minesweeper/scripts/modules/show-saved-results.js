@@ -9,6 +9,7 @@ import { changeLevel, blockedChooseLevel } from './levels-actions.js';
 import { updateTimer, startTimer } from './timer.js';
 import { checkOpenedCells } from './cell-actions.js';
 import getData from './local-storage-data.js';
+import { updateIsFlag } from './flag-actions.js';
 
 function addValueToHtml(cells) {
   const cellsHtml = document.querySelectorAll('.cell');
@@ -70,7 +71,7 @@ function updateTimerValues(timerValues) {
 function getGameState() {
   const dataValues = getData();
   const {
-    gameState, arrayState, theme, sound, steps, level, bombs, timer,
+    gameState, arrayState, theme, sound, steps, level, bombs, timer, flag,
   } = dataValues;
   if (level && level.value) addLevel(level.value);
   if (arrayState && arrayState.finishArray) updateFinishArray(arrayState.finishArray);
@@ -80,6 +81,7 @@ function getGameState() {
   if (sound && !sound.value) turnOffSound();
   if (steps && steps.value) updateSteps(steps.value);
   if (timer && timer.value) updateTimerValues(timer.value);
+  if (flag && flag.value) updateIsFlag();
 }
 
 export default getGameState;

@@ -6,10 +6,10 @@ let seconds = 0;
 let timeInterval;
 let isTimer = false;
 
-function formatTime(h, min, sec) {
-  const hourValue = h ? `${h}:` : '';
-  const minutesValue = min < 10 ? `0${min}` : min;
-  const secondsValue = sec < 10 ? `0${sec}` : sec;
+function formatTime() {
+  const hourValue = hour ? `${hour}:` : '';
+  const minutesValue = minutes < 10 ? `0${minutes}` : minutes;
+  const secondsValue = seconds < 10 ? `0${seconds}` : seconds;
   const result = `${hourValue}${minutesValue}:${secondsValue}`;
   const timer = document.querySelector('.timer');
   timer.textContent = result;
@@ -19,7 +19,7 @@ function startTimer() {
   if (!isTimer) {
     isTimer = true;
     timeInterval = setInterval(() => {
-      formatTime(hour, minutes, seconds);
+      formatTime();
       seconds += 1;
       if (seconds === 60) {
         minutes += 1;
@@ -54,7 +54,7 @@ function resetTimer() {
   hour = 0;
   minutes = 0;
   seconds = 0;
-  formatTime(hour, minutes, seconds);
+  formatTime();
   isTimer = false;
   saveTimerState([hour, minutes, seconds]);
 }

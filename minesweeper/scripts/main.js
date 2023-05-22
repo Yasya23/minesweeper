@@ -17,7 +17,9 @@ import { startTimer, resetTimer } from './modules/timer.js';
 import { actionsWithModalWindow } from './modules/modal-window.js';
 import newGame from './modules/new-game.js';
 import { playSound, switchSoundValue } from './modules/sounds.js';
-import { saveGameState, saveThemeState, saveSoundState } from './modules/save-results.js';
+import {
+  saveGameState, saveThemeState, saveSoundState, saveFlagState,
+} from './modules/save-results.js';
 import getGameState from './modules/show-saved-results.js';
 
 function actionsWithCells(id) {
@@ -76,6 +78,7 @@ function handleClickActions(e) {
     actionsWithModalWindow('wrapper');
   } else if (idData === 'flag') {
     updateIsFlag();
+    saveFlagState(returnIsFlag());
   } else if (classList.contains('cell') && !returnIsFlag() && !classList.contains('flaged')) {
     handleCellClick(classList, idData);
     saveGameState('cell');

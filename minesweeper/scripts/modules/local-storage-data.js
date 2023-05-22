@@ -7,6 +7,7 @@ function getData() {
   const levelData = localStorage.getItem('levelState');
   const bombsData = localStorage.getItem('bombsState');
   const timerData = localStorage.getItem('timerState');
+  const flagData = localStorage.getItem('flagState');
 
   const gameState = gameStateData ? JSON.parse(gameStateData) : {};
   const arrayState = arrayStateData ? JSON.parse(arrayStateData) : {};
@@ -16,6 +17,7 @@ function getData() {
   const level = levelData ? JSON.parse(levelData) : {};
   const bombs = bombsData ? JSON.parse(bombsData) : {};
   const timer = bombsData ? JSON.parse(timerData) : {};
+  const flag = flagData ? JSON.parse(flagData) : {};
 
   const dataValues = {
     gameState,
@@ -26,6 +28,7 @@ function getData() {
     level,
     bombs,
     timer,
+    flag,
   };
 
   return dataValues;

@@ -54,7 +54,13 @@ function saveTimerState(value) {
   localStorage.setItem('timerState', JSON.stringify(timer));
 }
 
+function saveFlagState(value) {
+  const flag = {};
+  flag.value = value;
+  localStorage.setItem('flagState', JSON.stringify(flag));
+}
+
 export {
   saveGameState, saveArrayState, saveThemeState, saveSoundState, saveStepsState, saveLevelState,
-  saveBobmQuantityState, saveTimerState,
+  saveBobmQuantityState, saveTimerState, saveFlagState,
 };
